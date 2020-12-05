@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { Http} from '@angular/http';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
