@@ -5,9 +5,12 @@ $main_color: #B03234;
   #header-config-logo{
     display: inline-block;
     float: left;
+    margin-left: 23px;
   }
   .nav-content{
     height: 100px;
+    margin-left: 250px;
+    display: inline-block;
     ul{
       list-style: none;
       height: 100px;
@@ -34,5 +37,23 @@ $main_color: #B03234;
       }
     }
   }
-}
+  #user-image{
+    margin-top: 0px;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: #B03234;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    float: right;
+    margin-right: 30px;
+    margin-top: 18px;
+  }
 
+}
+.exit-button{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 26px;
+}

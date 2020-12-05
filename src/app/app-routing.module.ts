@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MainConfigComponent } from './configuration/main-config/main-config.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 @NgModule({
@@ -20,6 +21,10 @@ import { LoginComponent } from './login/login.component';
           {
             path: 'login',
             component: LoginComponent
+          },
+          {
+            path: 'config',
+            component: MainConfigComponent
           }
         ]
       }

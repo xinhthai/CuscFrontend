@@ -1,0 +1,37 @@
+<div class="container">
+  <div style="font-size: 25px; margin-top: 25px;">Đăng tin mới</div>
+  <form action="" method="POST">
+    <table border="1" style="height: 350px; margin-top: 80px; margin-left: 140px;">
+      <tr>
+        <th>Chuyên mục</th>
+        <td>
+          <select>
+            <option>Tin tuyển sinh</option>
+            <option>Tin hoạt động</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>Tiêu đề tin</th>
+        <td>
+          <input type="text" name="title">
+        </td>
+      </tr>
+      <tr>
+        <th>Hình đại diện</th>
+        <td>
+          <input type="file" name="image_path">
+        </td>
+      </tr>
+      <tr>
+        <th>Mô tả</th>
+        <td><input type="text" name="description"></td>
+      </tr>
+      <tr>
+        <th>Nội dung tin</th>
+        <td style="margin-top: 0px;"><ckeditor [editor]="Editor"></ckeditor></td>
+      </tr>
+    </table>
+    <input type="submit" value="Submit" style="height: 45px; width: 117px; margin-top: 27px; margin-left: 720px;">
+  </form>
+</div>

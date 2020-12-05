@@ -1,0 +1,28 @@
+$main-color : #B03234;
+.post-news-button{
+  display: inline-block;
+  background-color: $main-color ;
+  float: left;
+  height: 40px;
+  width: 110px;
+  :hover{
+    cursor: pointer;
+  }
+  a{
+    color: white;
+  }
+}
+.find-button{
+  display: flex;
+  justify-content: flex-end;
+}
+.list-news{
+  margin-top: 23px;
+}
+.list-button-detail{
+  input{
+    height: 40px;
+    width: 60px;
+    margin-right: 2px;
+  }
+}
