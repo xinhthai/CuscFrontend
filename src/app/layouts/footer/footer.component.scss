@@ -1,0 +1,20 @@
+.fa-map-marker::before{
+  content: "\f041";
+}
+li{
+  list-style: none;
+}
+%color{
+  color: white;
+  line-height: 30px;
+}
+svg, li{
+  @extend %color;
+}
+h2{
+  @extend %color;
+  margin-left: 30px;
+}
+.footer_link{
+  padding-top: 22px;
+}

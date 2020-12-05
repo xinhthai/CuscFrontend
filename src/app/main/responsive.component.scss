@@ -1,0 +1,37 @@
+// pc col-xl
+@media (min-width: 1200px) {
+
+}
+/* Medium screen : 992px. col-lg*/
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .cusc_header{
+    width: 1100px;
+    p{
+      display: block !important;
+    }
+  }
+}
+
+/* Tablet :768px. col-md*/
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .cusc_header{
+    width: 100%;
+  }
+}
+
+/* Large Mobile :480px. col-sm */
+
+@media only screen and (max-width: 767px) {
+  .cusc_header{
+    width: 100%;
+  }
+}
+
+/* small Mobile :320px. col */
+
+@media only screen and (max-width: 479px) {
+  .cusc_header{
+    width: 100%;
+  }
+}

@@ -1,0 +1,38 @@
+$main_color: #B03234;
+#nav-config{
+  width: 100%;
+  border-bottom: 1px solid $main_color;
+  #header-config-logo{
+    display: inline-block;
+    float: left;
+  }
+  .nav-content{
+    height: 100px;
+    ul{
+      list-style: none;
+      height: 100px;
+      li{
+        display: inline-block;
+        height: 100px;
+        width: 109px;
+        margin-left: 63px;
+        padding-top: 40px;
+        text-align: center;
+        a{
+          text-transform: uppercase;
+        }
+        font {
+          size: 14px;
+        }
+        :first{
+          margin-left: 20px;
+        }
+      }
+      :hover{
+        color: white;
+        background-color: $main_color;
+      }
+    }
+  }
+}
+
