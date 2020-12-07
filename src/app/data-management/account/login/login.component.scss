@@ -12,16 +12,26 @@ body {
   border: 1px solid #9C9C9C;
   background-color: #EAEAEA;
 }
-#login .container #login-row #login-column #login-box #login-form {
+#login-form {
   padding: 20px;
 }
-#login .container #login-row #login-column #login-box #login-form #register-link {
+#register-link {
   margin-top: -85px;
 }
 .text-info{
   color: $maincolor !important;
 }
 .btn-info{
+  background-color: $maincolor;
+  border-color: $maincolor;
+}
+.class-valid{
+  border: 2px solid #42A948 ;
+}
+.class-novalid{
+  border: 2px solid #a94442;
+}
+.btn-submit{
   background-color: $maincolor;
   border-color: $maincolor;
 }

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
-import { NewsInputComponent } from './data-management/news-input/news-input.component';
-import { NewsTableComponent } from './data-management/news-table/news-table.component';
+import { NewsInputComponent } from './data-management/news-management/news-input/news-input.component';
+import { NewsTableComponent } from './data-management/news-management/news-table/news-table.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from '../app/data-management/account/login/login.component';
+import { NewsCategoryComponent } from './data-management/news-management/news-category/news-category.component';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
@@ -26,12 +27,20 @@ import { LoginComponent } from './login/login.component';
           },
           {
             path: 'admin',
-            component: NewsTableComponent,
+            component: AdminHomeComponent,
             children:[
               {
                 path: 'add-news',
                 component: NewsInputComponent
               },
+              {
+                path: 'list-news',
+                component: NewsTableComponent
+              },
+              {
+                path: 'category-news',
+                component: NewsCategoryComponent
+              }
             ]
           }
         ]

@@ -32,8 +32,7 @@ $main_color: #B03234;
         }
       }
       :hover{
-        color: white;
-        background-color: $main_color;
+        color: $main_color;
       }
     }
   }
