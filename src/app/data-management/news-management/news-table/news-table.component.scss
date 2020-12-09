@@ -1,23 +1,21 @@
 $main-color : #B03234;
-.post-news-button{
-  display: inline-block;
-  background-color: $main-color ;
-  float: left;
-  height: 40px;
-  width: 110px;
-  :hover{
-    cursor: pointer;
-  }
-  a{
-    color: white;
-  }
-}
 .find-button{
   display: flex;
   justify-content: flex-end;
 }
 .list-news{
   margin-top: 23px;
+  table{
+    tr{
+      height: 50px;
+      th{
+        text-align: center;
+      }
+      td{
+        text-align: center;
+      }
+    }
+  }
 }
 .list-button-detail{
   input{
@@ -26,16 +24,21 @@ $main-color : #B03234;
     margin-right: 2px;
   }
 }
-.button-item{
-  height: 30px;
-  width: 55px;
-  margin-left: 20px;
-}
 .image-news{
   img {
     height: 200px;
     width: 225px;
     margin-left: 30px;
     margin-right: 20px;
+  }
+}
+svg{
+  width: 25px;
+  color: #B03234;
+}
+.image-news{
+  img{
+    width: 80px;
+    height: 40px;
   }
 }

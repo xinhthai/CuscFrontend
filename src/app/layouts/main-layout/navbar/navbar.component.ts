@@ -18,11 +18,8 @@ export class NavbarComponent implements OnInit {
     this.menuService.getAllMenu().subscribe(
       data => {
         this.menu=data;
-        console.log(data);
       },
       error => console.log(error)
       );
   }
-
-
 }

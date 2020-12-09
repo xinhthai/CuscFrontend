@@ -30,13 +30,12 @@
         </div>
       </div>
       <div style="display: flex; justify-content: center;">
-        <input class="input-submit" type="submit" value="Lưu nháp">
-        <input class="input-submit" type="submit" value="Hủy" >
-        <input class="input-submit" type="submit" value="Đăng tin">
+        <input class="button" type="submit" value="Lưu nháp">
+        <input class="button" type="submit" value="Hủy" >
+        <!-- button gui tin danh cho nguoi viet tin sau khi gui tin, tin tuc se dươc chuyen sang trang cua nguoi quan tri duyet tin, nguoi dang  -->
+        <input [ngStyle]="{'display': active == true ? 'block' : 'none'}" class="button" type="submit" value="Gửi tin">
+        <input [ngStyle]="{'display': active == false ? 'block' : 'none'}" class="button" type="submit" value="Đăng tin">
       </div>
-
     </div>
-
-
   </form>
 </div>

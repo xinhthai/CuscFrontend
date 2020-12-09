@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-input.component.scss','../../../../assets/forms.scss']
 })
 export class NewsInputComponent implements OnInit {
-
+  active:boolean=false;
   constructor() { }
 
   ngOnInit(): void {
