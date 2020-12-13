@@ -3,74 +3,72 @@
   <div>
     <div class="text" style="margin: 30px;">
       Danh sách chuyên mục tin:
-      <input type="button" (click)="addNews()" class="button" value="Thêm">
+      <input type="button" (click)="addAction()"  class="button" value="Thêm">
     </div>
   </div>
   <div id="list" style="margin: 30px;">
     <table>
-      <tr>
-        <th class="col-xl-8" style="">Tên loại tin</th>
-        <th class="col-xl-4"></th>
-      </tr>
-      <tr>
-        <td>
-          <div class="col-xl-8" style="display: inline-block;">
-            Tin tuyển sinh
-          </div>
-          <div class="col-xl-4" style="float: right; display: flex;">
-            <input type="button" (click)="editNews()" class="button" value="Sửa">
-            <input type="button" class="button" value="Xóa">
-          </div>
-        </td>
-      </tr>
-      <tr style="background-color: #f2f2f2;">
-        <td>
-          <div class="col-xl-8" style="display: inline-block;">
-            Tin hoạt động
-          </div>
-          <div class="col-xl-4" style="float: right; display: flex;">
-            <input type="button" (click)="editNews()" class="button" value="Sửa">
-            <input type="button" class="button" value="Xóa">
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="col-xl-8" style="display: inline-block;">
-            việc làm
-          </div>
-          <div class="col-xl-4" style="float: right; display: flex;">
-            <input type="button" (click)="editNews()" class="button" value="Sửa">
-            <input type="button" class="button" value="Xóa">
-          </div>
-        </td>
-      </tr>
+      <thead>
+        <tr style="background-color: #AFAFAF; height: 50px;">
+          <th class="col-xl-8" style="">Tên loại tin</th>
+          <th class="col-xl-4"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listCategory; let i=index" [ngClass]="{'my-class' : i%2==1}">
+          <td>
+            <div class="col-xl-8" style="display: inline-block;">
+              {{item.categoryName}}
+            </div>
+            <div class="col-xl-4" style="float: right; display: flex;">
+              <input type="button" (click)="editCategory(item.categoryId)" class="button" value="Sửa">
+              <input type="button" class="button" (click)="deleteCategory(item.categoryId)" value="Xóa">
+            </div>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
   <div style="display: flex; justify-content: center;">
-    <div id="add-category-news" [ngStyle]="{'display':action==true ? 'block' : 'none'}" class="col-xl-8 formEditNews" style="">
+    <div id="add-category-news" [ngStyle]="{'display':action==1 ? 'block' : 'none'}" class="col-xl-8 formEditNews" style="">
       <div class="form-input">
         <h4>{{nameAction}}</h4>
         <div class="alert alert-success">Chuyên mục tin tức giúp sắp xếp và quản lý tin một cách hiệu quả.
           Sử dụng trang này để thêm, xóa hoặc chỉnh sửa chuyên mục tin. Lưu ý, xóa chuyên mục tin sẽ xóa luôn tất cả các tin đã đăng trong chuyên mục.
         </div>
-        <form #categoryForm (ngSubmit)="onSubmit(name1)" method="POST">
+        <!-- form -->
+        <form #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm)" method="post">
           <div class="form-group">
             <label for="categoryname" class="text-info">Tên loại tin:</label><br>
-            <input type="text" class="form-control" id="categoryname" [(ngModel)]="name1"  name="categoryname" required />
+            <input type="text" class="form-control" id="categoryname" [(ngModel)]="category.categoryName"  name="categoryName" required />
           </div>
           <div style="display: flex; justify-content: center;">
-            <button type="submit" class="btn btn-success btn-submit">Submit</button>
+            <button type="submit" class="btn btn-success btn-submit" [disabled]="!categoryForm.form.valid">Submit</button>
           </div>
         </form>
-    </div>
-    <div id="edit-category-news">
-
-    </div>
-    <div id="delete-category-news">
-
-    </div>
+      </div>
     </div>
   </div>
-
+  <div id="edit-category-news" [ngStyle]="{'display':action==2 ? 'block' : 'none'}">
+    <div style="display: flex; justify-content: center;">
+      <div id="add-category-news" class="col-xl-8 formEditNews" style="">
+        <div class="form-input">
+          <h4>{{nameAction}}</h4>
+          <div class="alert alert-success">Chuyên mục tin tức giúp sắp xếp và quản lý tin một cách hiệu quả.
+            Sử dụng trang này để thêm, xóa hoặc chỉnh sửa chuyên mục tin. Lưu ý, xóa chuyên mục tin sẽ xóa luôn tất cả các tin đã đăng trong chuyên mục.
+          </div>
+          <form #categoryEditForm="ngForm" (ngSubmit)="updateCategory(categoryEditForm)" method="post">
+            <div class="form-group">
+              <label for="categoryname" class="text-info">Tên loại tin:</label><br>
+              <input type="text" class="form-control" id="categoryname" [(ngModel)]="category.categoryName"  name="categoryName" required />
+            </div>
+            <div style="display: flex; justify-content: center;">
+              <button type="submit" class="btn btn-success btn-submit" [disabled]="!categoryEditForm.form.valid">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 

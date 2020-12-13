@@ -11,8 +11,7 @@
           <h3>Chuyên mục tin</h3>
           <p>Chọn một chuyên mục cho bản tin.Nhấn vào đây nếu bạn muốn thêm chuyên mục tin.</p>
           <select>
-            <option>Tin tuyển sinh</option>
-            <option>Tin hoạt động</option>
+            <option *ngFor="let item of listcategory">{{item.categoryName}}</option>
           </select>
         </div>
         <div class="input-item">
@@ -26,8 +25,8 @@
         </div>
         <div>
           <h3>Nội dung tin</h3>
-          <h3>khung editor</h3>
         </div>
+        <ckeditor [editor]="Editor" [config] ="editorConfig"></ckeditor>
       </div>
       <div style="display: flex; justify-content: center;">
         <input class="button" type="submit" value="Lưu nháp">

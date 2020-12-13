@@ -6,12 +6,32 @@ import { NewsTableComponent } from './data-management/news-management/news-table
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from '../app/data-management/account/login/login.component';
 import { NewsCategoryComponent } from './data-management/news-management/news-category/news-category.component';
+import { NewsDetailComponent } from './data-management/news-management/news-detail/news-detail.component';
+import { MainPageComponent } from './data-management/news-management/main-page/main-page.component';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
+      // {
+      //   path: 'newchild',
+      //   component: NewsDetailComponent
+      // },
+      // {
+      //   path: 'home',
+      //   component:HomeComponent
+      // },
       {
-        path: 'home',
-        component:HomeComponent
+        path:'',
+        component:HomeComponent,
+        children:[
+          {
+            path:'home',
+            component: MainPageComponent,
+          },
+          {
+            path:'detail/:id',
+            component: NewsDetailComponent
+          }
+        ]
       },
       {
         path : '',

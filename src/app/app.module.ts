@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 
-
+import {SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './layouts/main-layout/footer/footer.component';
 import { HeaderComponent } from './layouts/main-layout/header/header.component';
@@ -14,11 +14,16 @@ import { HomeComponent } from './home/home.component';
 import { CommonModule} from '@angular/common';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminHeaderComponent } from './layouts/admin-layout/admin-header/admin-header.component';
-import { NewsInputComponent } from './data-management/news-management/news-input/news-input.component';
 import { NewsTableComponent } from './data-management/news-management/news-table/news-table.component';
 import { AccountComponent } from './data-management/account/account.component';
 import { LoginComponent } from './data-management/account/login/login.component';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NewsCategoryComponent } from './data-management/news-management/news-category/news-category.component';
+import { NewsInputComponent } from './data-management/news-management/news-input/news-input.component';
+import { NewsDetailComponent } from './data-management/news-management/news-detail/news-detail.component';
+import { MainPageComponent } from './data-management/news-management/main-page/main-page.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 @NgModule({
   declarations: [
     MainComponent,
@@ -29,10 +34,12 @@ import { NewsCategoryComponent } from './data-management/news-management/news-ca
     LoginComponent,
     AdminHomeComponent,
     AdminHeaderComponent,
-    NewsInputComponent,
     NewsTableComponent,
+    NewsCategoryComponent,
+    NewsInputComponent,
     AccountComponent,
-    NewsCategoryComponent
+    NewsDetailComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +47,12 @@ import { NewsCategoryComponent } from './data-management/news-management/news-ca
     CommonModule,
     FormsModule,
     StickyNavModule,
-    HttpClientModule
+    HttpClientModule,
+    SnotifyModule,
+    CKEditorModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{provide:'SnotifyToastConfig', useValue: ToastDefaults },SnotifyService],
   bootstrap: [MainComponent]
 })
 export class AppModule { }
