@@ -10,9 +10,9 @@
         <div class="input-item">
           <h3>Chuyên mục tin</h3>
           <p>Chọn một chuyên mục cho bản tin.Nhấn vào đây nếu bạn muốn thêm chuyên mục tin.</p>
-          <select>
-            <option *ngFor="let item of listcategory">{{item.categoryName}}</option>
-          </select>
+          <mat-select>
+            <mat-option *ngFor="let item of listcategory">{{item.categoryName}}</mat-option>
+          </mat-select>
         </div>
         <div class="input-item">
           <h3>Người gửi tin</h3>

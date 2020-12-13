@@ -23,7 +23,9 @@ import { NewsInputComponent } from './data-management/news-management/news-input
 import { NewsDetailComponent } from './data-management/news-management/news-detail/news-detail.component';
 import { MainPageComponent } from './data-management/news-management/main-page/main-page.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-
+import {MatSliderModule} from '@angular/material/slider';
+import { MatSelectModule} from '@angular/material/select';
+import { DemoMaterialModule } from './main/material.module';
 @NgModule({
   declarations: [
     MainComponent,
@@ -50,7 +52,10 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     HttpClientModule,
     SnotifyModule,
     CKEditorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatSelectModule,
+    DemoMaterialModule
   ],
   providers: [{provide:'SnotifyToastConfig', useValue: ToastDefaults },SnotifyService],
   bootstrap: [MainComponent]
