@@ -71,4 +71,17 @@ export class NewsInputComponent implements OnInit {
       error => console.log(error)
     );
   }
+  // show image
+  url="../../../../assets/image/doreamon.jpg";
+  onselectFile(e){
+    console.log('hello'+ e);
+    if(e.target.files){
+      var reader=new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload=(event:any)=>{
+        console.log(event.target.result)
+        this.url=event.target.result;
+      }
+    }
+  }
 }

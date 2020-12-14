@@ -6,29 +6,7 @@
       <input type="button" (click)="addAction()"  class="button" value="Thêm">
     </div>
   </div>
-  <div id="list" style="margin: 30px;">
-    <table>
-      <thead>
-        <tr style="background-color: #AFAFAF; height: 50px;">
-          <th class="col-xl-8" style="">Tên loại tin</th>
-          <th class="col-xl-4"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of listCategory; let i=index" [ngClass]="{'my-class' : i%2==1}">
-          <td>
-            <div class="col-xl-8" style="display: inline-block;">
-              {{item.categoryName}}
-            </div>
-            <div class="col-xl-4" style="float: right; display: flex;">
-              <input type="button" (click)="editCategory(item.categoryId)" class="button" value="Sửa">
-              <input type="button" class="button" (click)="deleteCategory(item.categoryId)" value="Xóa">
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
   <div style="display: flex; justify-content: center;">
     <div id="add-category-news" [ngStyle]="{'display':action==1 ? 'block' : 'none'}" class="col-xl-8 formEditNews" style="">
       <div class="form-input">
@@ -70,5 +48,32 @@
       </div>
     </div>
   </div>
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  <div id="list" style="margin: 30px;">
+    <table>
+      <thead>
+        <tr style="background-color: #AFAFAF; height: 50px;">
+          <th class="col-xl-8" style="">Tên loại tin</th>
+          <th class="col-xl-4"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listCategory | paginate: {itemsPerPage: 5, currentPage: p}; let i=index" [ngClass]="{'my-class' : i%2==1}">
+          <td>
+            <div class="col-xl-8" style="display: inline-block;">
+              {{item.categoryName}}
+            </div>
+            <div class="col-xl-4" style="float: right; display: flex;">
+              <input type="button" (click)="editCategory(item.categoryId)" class="button" value="Sửa">
+              <input type="button" class="button" (click)="deleteCategory(item.categoryId)" value="Xóa">
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
 </div>
 

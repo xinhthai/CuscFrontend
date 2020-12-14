@@ -26,6 +26,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatSelectModule} from '@angular/material/select';
 import { DemoMaterialModule } from './main/material.module';
+import { NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     MainComponent,
@@ -55,7 +56,8 @@ import { DemoMaterialModule } from './main/material.module';
     BrowserAnimationsModule,
     MatSliderModule,
     MatSelectModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    NgxPaginationModule
   ],
   providers: [{provide:'SnotifyToastConfig', useValue: ToastDefaults },SnotifyService],
   bootstrap: [MainComponent]

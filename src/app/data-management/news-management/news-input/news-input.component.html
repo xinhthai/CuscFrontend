@@ -5,30 +5,43 @@
       <div class="col-xl-8" style="margin-left: 140px;">
         <div class="input-item">
           <h3>Tiêu đề tin</h3>
-          <input type="text">
+          <p class="alert alert-success">Chọn tiêu đề phù hợp cho bản tin. Tiêu đề tin không nên quá dài và chứa các ký tự đặc biệt.</p>
+          <mat-form-field>
+            <mat-label>Tên tin</mat-label>
+            <input type="text" matInput>
+          </mat-form-field>
         </div>
         <div class="input-item">
           <h3>Chuyên mục tin</h3>
-          <p>Chọn một chuyên mục cho bản tin.Nhấn vào đây nếu bạn muốn thêm chuyên mục tin.</p>
-          <mat-select>
-            <mat-option *ngFor="let item of listcategory">{{item.categoryName}}</mat-option>
-          </mat-select>
+          <p class="alert alert-success">Chọn một chuyên mục cho bản tin.Nhấn vào đây nếu bạn muốn thêm chuyên mục tin.</p>
+          <mat-form-field appearance="fill" style="width: 620px;">
+            <mat-label>Loại tin</mat-label>
+            <mat-select name="category">
+              <mat-option *ngFor="let item of listcategory" value="category.value">{{item.categoryName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
         <div class="input-item">
           <h3>Người gửi tin</h3>
-          <input type="text">
+          <mat-form-field>
+            <mat-select name="user-name-news">
+              <mat-option value="user-name-news.value">Nguyen Van A</mat-option>
+              <mat-option value="user-name-news.value">Tran Thi B</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
         <div class="input-item">
           <h3>Hình ảnh chính:</h3>
-          <p>Hình ảnh chính của bản tin sẽ thể hiện như tiêu để của bản tin.</p>
-          <input type="file">
+          <p class="alert alert-success">Hình ảnh chính của bản tin sẽ thể hiện như tiêu để của bản tin.</p>
+          <img src="{{url}}" height="200px" width="200px" >
+          <input type="file" (change)="onselectFile($event)" style="width: 400px; display: inline-block; float: right;">
         </div>
         <div>
           <h3>Nội dung tin</h3>
         </div>
         <ckeditor [editor]="Editor" [config] ="editorConfig"></ckeditor>
       </div>
-      <div style="display: flex; justify-content: center;">
+      <div style="display: flex; justify-content: center; margin-top: 20px;">
         <input class="button" type="submit" value="Lưu nháp">
         <input class="button" type="submit" value="Hủy" >
         <!-- button gui tin danh cho nguoi viet tin sau khi gui tin, tin tuc se dươc chuyen sang trang cua nguoi quan tri duyet tin, nguoi dang  -->

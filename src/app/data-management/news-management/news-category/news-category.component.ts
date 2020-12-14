@@ -92,5 +92,6 @@ export class NewsCategoryComponent implements OnInit {
   onSuccess(){
     this.snotifyService.success('Đăng nhập thành công');
   }
-
+  // pagination
+  p:number;
 }
