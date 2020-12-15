@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="post-news-button">Đăng ký thông tin Admin</div>
+  <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+    <div class="col-xl-8">
+      <div [formGroup]="profileForm">
+        <mat-form-field style="margin-top: 50px;">
+          <mat-label>Username</mat-label>
+          <input formControlName="username" type="text" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input formControlName="password" type="text" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Fullname</mat-label>
+          <input formControlName="fullname" type="text" matInput>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Giới tính</mat-label>
+          <mat-select formControlName="sex">
+            <mat-option>Nam</mat-option>
+            <mat-option>Nữ</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Vai trò</mat-label>
+          <mat-select formControlName="role">
+            <mat-option>Người đăng tin</mat-option>
+            <mat-option>Người viết bài</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button>Đăng ký</button>
+    </div>
+  </div>
+
+</div>

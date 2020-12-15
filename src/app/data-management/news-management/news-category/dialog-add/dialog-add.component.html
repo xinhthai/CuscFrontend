@@ -1,0 +1,12 @@
+<div>
+  <div>{{nameAction}}</div>
+  <div class="alert alert-success" style="width: 418px;">Chuyên mục tin tức giúp sắp xếp và quản lý tin một cách hiệu quả.
+    Sử dụng trang này để thêm, xóa hoặc chỉnh sửa chuyên mục tin. Lưu ý, xóa chuyên mục tin sẽ xóa luôn tất cả các tin đã đăng trong chuyên mục.
+  </div>
+    <mat-form-field style="width: 300px;" >
+      <mat-label>Tên loại tin</mat-label>
+      <input matInput [(ngModel)]="category.categoryName">
+    </mat-form-field>
+    <button mat-raised-button (click)="updateCategory()" style="margin-left: 20px;" [ngStyle]="{'display':value!=0 ? 'block' : 'none'}">Update</button>
+    <button mat-raised-button (click)="addCategory()" style="margin-left: 20px;" [ngStyle]="{'display':value==0 ? 'block' : 'none'}">Add</button>
+</div>

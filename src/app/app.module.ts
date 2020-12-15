@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +19,7 @@ import { AccountComponent } from './data-management/account/account.component';
 import { LoginComponent } from './data-management/account/login/login.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NewsCategoryComponent } from './data-management/news-management/news-category/news-category.component';
-import { NewsInputComponent } from './data-management/news-management/news-input/news-input.component';
+import {  DialogComponent, NewsInputComponent } from './data-management/news-management/news-input/news-input.component';
 import { NewsDetailComponent } from './data-management/news-management/news-detail/news-detail.component';
 import { MainPageComponent } from './data-management/news-management/main-page/main-page.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
@@ -27,6 +27,11 @@ import {MatSliderModule} from '@angular/material/slider';
 import { MatSelectModule} from '@angular/material/select';
 import { DemoMaterialModule } from './main/material.module';
 import { NgxPaginationModule} from 'ngx-pagination';
+import { ChoiceDialogComponent } from './shared/choice-dialog/choice-dialog.component';
+import { NotificationDialogComponent } from './shared/notification-dialog/notification-dialog.component';
+import { ErrorComponent } from './data-management/error/error.component';
+import { DialogAddComponent } from './data-management/news-management/news-category/dialog-add/dialog-add.component';
+import { RegisterComponent } from './data-management/account/register/register.component';
 @NgModule({
   declarations: [
     MainComponent,
@@ -42,7 +47,13 @@ import { NgxPaginationModule} from 'ngx-pagination';
     NewsInputComponent,
     AccountComponent,
     NewsDetailComponent,
-    MainPageComponent
+    MainPageComponent,
+    ChoiceDialogComponent,
+    NotificationDialogComponent,
+    DialogComponent,
+    ErrorComponent,
+    DialogAddComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +68,8 @@ import { NgxPaginationModule} from 'ngx-pagination';
     MatSliderModule,
     MatSelectModule,
     DemoMaterialModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [{provide:'SnotifyToastConfig', useValue: ToastDefaults },SnotifyService],
   bootstrap: [MainComponent]

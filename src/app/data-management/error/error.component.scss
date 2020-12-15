@@ -1,0 +1,15 @@
+body{
+  padding: 0;
+}
+svg{
+  height: 200px;
+  width: 200px;
+}
+#error-main{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+

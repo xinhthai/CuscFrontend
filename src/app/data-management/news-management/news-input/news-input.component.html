@@ -42,11 +42,10 @@
         <ckeditor [editor]="Editor" [config] ="editorConfig"></ckeditor>
       </div>
       <div style="display: flex; justify-content: center; margin-top: 20px;">
-        <input class="button" type="submit" value="Lưu nháp">
-        <input class="button" type="submit" value="Hủy" >
+        <button mat-raised-button>Hủy</button>
         <!-- button gui tin danh cho nguoi viet tin sau khi gui tin, tin tuc se dươc chuyen sang trang cua nguoi quan tri duyet tin, nguoi dang  -->
-        <input [ngStyle]="{'display': active == true ? 'block' : 'none'}" class="button" type="submit" value="Gửi tin">
-        <input [ngStyle]="{'display': active == false ? 'block' : 'none'}" class="button" type="submit" value="Đăng tin">
+        <button mat-raised-button [ngStyle]="{'display': active == true ? 'block' : 'none'}">Gửi tin</button>
+        <button mat-raised-button [ngStyle]="{'display': active == false ? 'block' : 'none'}" (click)="openDialog()">Đăng tin</button>
       </div>
     </div>
   </form>

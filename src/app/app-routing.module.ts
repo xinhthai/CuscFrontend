@@ -8,6 +8,8 @@ import { LoginComponent } from '../app/data-management/account/login/login.compo
 import { NewsCategoryComponent } from './data-management/news-management/news-category/news-category.component';
 import { NewsDetailComponent } from './data-management/news-management/news-detail/news-detail.component';
 import { MainPageComponent } from './data-management/news-management/main-page/main-page.component';
+import { ErrorComponent } from './data-management/error/error.component';
+import { RegisterComponent } from './data-management/account/register/register.component';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
@@ -19,6 +21,7 @@ import { MainPageComponent } from './data-management/news-management/main-page/m
       //   path: 'home',
       //   component:HomeComponent
       // },
+
       {
         path:'',
         component:HomeComponent,
@@ -60,12 +63,23 @@ import { MainPageComponent } from './data-management/news-management/main-page/m
               {
                 path: 'category-news',
                 component: NewsCategoryComponent
+              },
+              {
+                path: 'register',
+                component: RegisterComponent
               }
             ]
           }
         ]
+      },
+      {
+        path: '404',
+        component: ErrorComponent
+      },
+      {
+        path: '**',
+        redirectTo: '/404'
       }
-
 
     ]
   )],

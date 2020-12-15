@@ -18,3 +18,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+button:focus{
+  outline: 0;
+}
+.post-news-button{
+  font : {
+    size: 25px;
+  }
+  padding-bottom: 20px;
+  border-bottom: 1px solid #AFAFAF;
+}

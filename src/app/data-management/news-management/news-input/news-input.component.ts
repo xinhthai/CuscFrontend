@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { Category } from '../news-category/category.model';
 import { CategoryService } from '../news-category/category.service';
 import * as Editor from '../../../../assets/ckeditor5/build/ckeditor';
+import { MatDialog } from '@angular/material/dialog';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-news-input',
@@ -13,7 +15,7 @@ export class NewsInputComponent implements OnInit {
   active:boolean=false;
   listcategory : Observable<Category[]>;
   public Editor = Editor ;
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, private dialog : MatDialog) { }
 
   ngOnInit(): void {
     this.listCategory();
@@ -83,5 +85,19 @@ export class NewsInputComponent implements OnInit {
         this.url=event.target.result;
       }
     }
+  }
+  // dialog
+  openDialog(){
+    console.log('hello t day ne');
+    this.dialog.open(DialogComponent);
+  }
+}
+@Component({
+  selector: 'dialog-component',
+  templateUrl: './dialog.component.html'
+})
+export class DialogComponent{
+  notifycation(){
+    console.log('đây đây nè');
   }
 }

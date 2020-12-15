@@ -3,7 +3,7 @@
   <div>
     <div class="text" style="margin: 30px;">
       Danh sách chuyên mục tin:
-      <input type="button" (click)="addAction()"  class="button" value="Thêm">
+      <button mat-raised-button (click)="showdialog(null,'Thêm tin tức',0)">Thêm</button>
     </div>
   </div>
 
@@ -15,7 +15,7 @@
           Sử dụng trang này để thêm, xóa hoặc chỉnh sửa chuyên mục tin. Lưu ý, xóa chuyên mục tin sẽ xóa luôn tất cả các tin đã đăng trong chuyên mục.
         </div>
         <!-- form -->
-        <form #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm)" method="post">
+        <form #categoryForm="ngForm" method="post">
           <div class="form-group">
             <label for="categoryname" class="text-info">Tên loại tin:</label><br>
             <input type="text" class="form-control" id="categoryname" [(ngModel)]="category.categoryName"  name="categoryName" required />
@@ -35,7 +35,7 @@
           <div class="alert alert-success">Chuyên mục tin tức giúp sắp xếp và quản lý tin một cách hiệu quả.
             Sử dụng trang này để thêm, xóa hoặc chỉnh sửa chuyên mục tin. Lưu ý, xóa chuyên mục tin sẽ xóa luôn tất cả các tin đã đăng trong chuyên mục.
           </div>
-          <form #categoryEditForm="ngForm" (ngSubmit)="updateCategory(categoryEditForm)" method="post">
+          <form #categoryEditForm="ngForm"  method="post">
             <div class="form-group">
               <label for="categoryname" class="text-info">Tên loại tin:</label><br>
               <input type="text" class="form-control" id="categoryname" [(ngModel)]="category.categoryName"  name="categoryName" required />
@@ -48,8 +48,7 @@
       </div>
     </div>
   </div>
-  <pagination-controls (pageChange)="p=$event"></pagination-controls>
-  <div id="list" style="margin: 30px;">
+  <!-- <div id="list" style="margin: 30px;">
     <table>
       <thead>
         <tr style="background-color: #AFAFAF; height: 50px;">
@@ -64,8 +63,8 @@
               {{item.categoryName}}
             </div>
             <div class="col-xl-4" style="float: right; display: flex;">
-              <input type="button" (click)="editCategory(item.categoryId)" class="button" value="Sửa">
-              <input type="button" class="button" (click)="deleteCategory(item.categoryId)" value="Xóa">
+              <button mat-raised-button (click)="editCategory(item.categoryId)">Sửa</button>
+              <button mat-raised-button (click)="deleteCategory(item.categoryId)">Xóa</button>
             </div>
           </td>
         </tr>
@@ -73,7 +72,26 @@
       </tbody>
     </table>
 
-  </div>
+  </div> -->
+  <div class="mat-elevation-z8">
 
+    <table mat-table [dataSource]="dataSource" matSort style="width: 100%;">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Tên loại tin</th>
+        <td mat-cell *matCellDef="let element">{{element.categoryName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="add">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="showdialog(element.categoryId,'Sửa loại tin',1)">Sửa</button></td>
+      </ng-container>
+      <ng-container matColumnDef="del">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="deleteCategory(element.categoryId)">Xóa</button></td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns : displayColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+  </div>
 </div>
 
