@@ -3,7 +3,7 @@
   <div>
     <div class="text" style="margin: 30px;">
       Danh sách chuyên mục tin:
-      <button mat-raised-button (click)="showdialog(null,'Thêm tin tức',0)">Thêm</button>
+      <button mat-raised-button (click)="addDialog()">Thêm</button>
     </div>
   </div>
 
@@ -82,11 +82,11 @@
       </ng-container>
       <ng-container matColumnDef="add">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="showdialog(element.categoryId,'Sửa loại tin',1)">Sửa</button></td>
+        <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="updateDialog(element.categoryId)">Sửa</button></td>
       </ng-container>
       <ng-container matColumnDef="del">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="deleteCategory(element.categoryId)">Xóa</button></td>
+        <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="deleteDialog(element.categoryId)">Xóa</button></td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
       <tr mat-row *matRowDef="let row; columns : displayColumns"></tr>

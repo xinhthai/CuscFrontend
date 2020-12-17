@@ -1,6 +1,6 @@
 <div class="container">
   <div class="post-news-button">Đăng tin mới</div>
-  <form [formGroup]="formCreateNews" method="POST">
+  <form [formGroup]="formUpdateNews" method="POST">
     <div class="col-xl-8" style="margin-left: 140px;">
       <div class="input-item">
         <h3>Tiêu đề tin</h3>
@@ -63,7 +63,7 @@
       <div style="display: flex; justify-content: center; margin-top: 20px;">
         <!-- button gui tin danh cho nguoi viet tin sau khi gui tin, tin tuc se dươc chuyen sang trang cua nguoi quan tri duyet tin, nguoi dang  -->
         <!-- <button mat-raised-button [ngStyle]="{'display': active == true ? 'block' : 'none'}">Gửi tin</button> -->
-        <button mat-raised-button [disabled]="formCreateNews.invalid" (click)="openDialog()" >Đăng tin</button>
+        <button mat-raised-button [disabled]="formUpdateNews.invalid" (click)="openDialog()" >Update</button>
       </div>
   </form>
 </div>

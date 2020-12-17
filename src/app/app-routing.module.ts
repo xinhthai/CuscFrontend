@@ -10,18 +10,10 @@ import { NewsDetailComponent } from './data-management/news-management/news-deta
 import { MainPageComponent } from './data-management/news-management/main-page/main-page.component';
 import { ErrorComponent } from './data-management/error/error.component';
 import { RegisterComponent } from './data-management/account/register/register.component';
+import { NewsUpdateComponent } from './data-management/news-management/news-update/news-update.component';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
-      // {
-      //   path: 'newchild',
-      //   component: NewsDetailComponent
-      // },
-      // {
-      //   path: 'home',
-      //   component:HomeComponent
-      // },
-
       {
         path:'',
         component:HomeComponent,
@@ -53,20 +45,35 @@ import { RegisterComponent } from './data-management/account/register/register.c
             component: AdminHomeComponent,
             children:[
               {
-                path: 'add-news',
-                component: NewsInputComponent
-              },
-              {
-                path: 'list-news',
-                component: NewsTableComponent
+                path: 'news',
+                children:[
+                  {
+                    path: 'list-news',
+                    component: NewsTableComponent
+                  },
+                  {
+                    path: 'create-news',
+                    component: NewsInputComponent
+                  },
+                  {
+                    path: 'edit-news',
+                    component: NewsUpdateComponent
+                  }
+                ]
               },
               {
                 path: 'category-news',
                 component: NewsCategoryComponent
               },
               {
-                path: 'register',
-                component: RegisterComponent
+                path: 'account',
+                component: RegisterComponent,
+                children: [
+                  {
+                    path: 'register',
+                    component: RegisterComponent
+                  }
+                ]
               }
             ]
           }

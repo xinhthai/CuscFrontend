@@ -10,6 +10,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EventEmitter } from '@angular/core';
 import { DialogAddComponent } from './dialog-add/dialog-add.component';
+import { DialogUpdateComponent } from './dialog-update/dialog-update.component';
+import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 @Component({
   selector: 'app-news-category',
   templateUrl: './news-category.component.html',
@@ -35,7 +37,6 @@ export class NewsCategoryComponent implements OnInit , OnDestroy{
 
   ngOnInit(): void {
     this.allListCategory();
-    this.onSuccess();
   }
   ngOnDestroy():void{
 
@@ -61,27 +62,6 @@ export class NewsCategoryComponent implements OnInit , OnDestroy{
     );
   }
 
-  // editCategory(id){
-  //   this.categoryService.getOneCategory(id).subscribe(
-  //     data =>{
-  //       this.category=data;
-  //     }
-  //   )
-  //   this.nameAction='Sửa loại tin';
-  //   this.action=2;
-  // }
-  deleteCategory(id){
-    this.categoryService.delCategory(id).subscribe(
-      data =>{
-        this.allListCategory();
-        this.snotifyService.success('Xóa loại tin thành công!');
-      },
-      (err : HttpErrorResponse) => {
-        console.log('backend returned code ${err.status}, body was: ${err.error} ');
-        this.snotifyService.error('Xóa loại tin thất bại!');
-      }
-    );
-  }
   // notify in angular
   onSuccess(){
     this.snotifyService.success('Đăng nhập thành công');
@@ -91,12 +71,26 @@ export class NewsCategoryComponent implements OnInit , OnDestroy{
   // dialog category edit
   // @Output() id:number;
   @Output() returnId=new EventEmitter();
-  showdialog(id,name,status){
-    // this.returnId.emit(id);
+  name: string;
+  addDialog(){
+    this.name='Thêm loại tin';
     this.dialog.open(DialogAddComponent,{
-      data: {id1 : id, name1:name, status1: status},
+      data: {name: this.name},
     });
     this.allListCategory();
+  }
+  updateDialog(id){
+    // this.returnId.emit(id);
+    this.name='Chỉnh sửa loại tin';
+    this.dialog.open(DialogUpdateComponent,{
+      data: {id1 : id, name1:this.name, status1: status},
+    });
+    this.allListCategory();
+  }
+  deleteDialog(id){
+    this.dialog.open(DialogDeleteComponent,{
+      data: {id: id}
+    })
   }
 }
 

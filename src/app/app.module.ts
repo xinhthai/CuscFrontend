@@ -32,6 +32,9 @@ import { NotificationDialogComponent } from './shared/notification-dialog/notifi
 import { ErrorComponent } from './data-management/error/error.component';
 import { DialogAddComponent } from './data-management/news-management/news-category/dialog-add/dialog-add.component';
 import { RegisterComponent } from './data-management/account/register/register.component';
+import { DialogUpdateComponent } from './data-management/news-management/news-category/dialog-update/dialog-update.component';
+import { NewsUpdateComponent } from './data-management/news-management/news-update/news-update.component';
+import { DialogDeleteComponent } from './data-management/news-management/news-category/dialog-delete/dialog-delete.component';
 @NgModule({
   declarations: [
     MainComponent,
@@ -53,7 +56,10 @@ import { RegisterComponent } from './data-management/account/register/register.c
     DialogComponent,
     ErrorComponent,
     DialogAddComponent,
-    RegisterComponent
+    RegisterComponent,
+    DialogUpdateComponent,
+    NewsUpdateComponent,
+    DialogDeleteComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news-table',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsTableComponent implements OnInit {
   active : boolean=false;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+  nextToCreateNews(){
+    this.router.navigate(['/admin/add-news']);
   }
 
 }

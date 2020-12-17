@@ -1,21 +1,25 @@
 <div class="container">
   <div class="post-news-button">Đăng ký thông tin Admin</div>
   <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
-    <div class="col-xl-8">
+    <div class="col-xl-7">
       <div [formGroup]="profileForm">
-        <mat-form-field style="margin-top: 50px;">
-          <mat-label>Username</mat-label>
-          <input formControlName="username" type="text" matInput>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input formControlName="password" type="text" matInput>
-        </mat-form-field>
-        <mat-form-field>
+        <div class="col-xl-6 username" style="margin-top: 50px; display: inline; width: 100%; padding-left :0; margin-top: 50px">
+          <mat-form-field style="margin-top: 50px;">
+            <mat-label>Username</mat-label>
+            <input formControlName="username" type="text" matInput>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 password" style=" float: right; width: 100%; padding-right: 0; margin-top: 50px">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Password</mat-label>
+            <input type="email" formControlName="password" type="text" matInput>
+          </mat-form-field>
+        </div>
+        <mat-form-field class="fullname">
           <mat-label>Fullname</mat-label>
           <input formControlName="fullname" type="text" matInput>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field style="margin-right: 100px;">
           <mat-label>Giới tính</mat-label>
           <mat-select formControlName="sex">
             <mat-option>Nam</mat-option>
@@ -30,8 +34,7 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <button mat-raised-button>Đăng ký</button>
+      <button mat-raised-button style="margin-top: 50px; margin-left: 215px;">Đăng ký</button>
     </div>
   </div>
-
 </div>

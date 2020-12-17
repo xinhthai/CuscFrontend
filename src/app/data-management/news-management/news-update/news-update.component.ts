@@ -1,20 +1,20 @@
-import { Component, Inject, Injectable, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import * as Editor from '../../../../assets/ckeditor5/build/ckeditor';
+import { Menu } from 'src/app/layouts/main-layout/menu.model';
 import { Category } from '../news-category/category.model';
 import { CategoryService } from '../news-category/category.service';
-import * as Editor from '../../../../assets/ckeditor5/build/ckeditor';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SnotifyService } from 'ng-snotify';
-import { Menu } from 'src/app/layouts/main-layout/menu.model';
+import { MatDialog } from '@angular/material/dialog';
 import { MenuService } from 'src/app/layouts/main-layout/menu.service';
-import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { DialogComponent } from '../news-input/news-input.component';
 
 @Component({
-  selector: 'app-news-input',
-  templateUrl: './news-input.component.html',
-  styleUrls: ['./news-input.component.scss','../../../../assets/forms.scss']
+  selector: 'app-news-update',
+  templateUrl: './news-update.component.html',
+  styleUrls: ['./news-update.component.scss']
 })
-export class NewsInputComponent implements OnInit {
+export class NewsUpdateComponent implements OnInit {
   active:boolean=false;
   listcategory : Observable<Category[]>;
   listmenu: Observable<Menu[]>;
@@ -31,7 +31,7 @@ export class NewsInputComponent implements OnInit {
     this.listCategory();
     this.listMenu();
   }
-  formCreateNews=new FormGroup({
+  formUpdateNews=new FormGroup({
     nameNews: new FormControl(''),
     selectCategory: new FormControl(''),
     // chooseMenu: new FormControl(''),
@@ -103,7 +103,6 @@ export class NewsInputComponent implements OnInit {
   // show image
   url="../../../../assets/image/doreamon.jpg";
   onselectFile(e){
-    console.log('hello'+ e);
     if(e.target.files){
       var reader=new FileReader();
       reader.readAsDataURL(e.target.files[0]);
@@ -113,28 +112,12 @@ export class NewsInputComponent implements OnInit {
       }
     }
   }
-  // dialog
+  // show dialog
   nameinfo:string;
   openDialog(){
-    this.nameinfo="Bạn có chắc muốn thêm bản tin vào danh sách tin tức?";
+    this.nameinfo='Bạn có chắc muốn update thông tin tin tức?';
     this.dialog.open(DialogComponent,{
-      data: {nameinfo: this.nameinfo, status: 1}
+      data: {nameinfo: this.nameinfo, status: 0}
     });
-  }
-}
-@Component({
-  selector: 'dialog-component',
-  templateUrl: './dialog.component.html'
-})
-export class DialogComponent implements OnInit{
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { nameinfo: string, status: number}
-  ){}
-  ngOnInit(): void {
-
-  }
-
-  notifycation(){
-    console.log('đây đây nè');
   }
 }
