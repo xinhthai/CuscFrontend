@@ -19,7 +19,7 @@ import { AccountComponent } from './data-management/account/account.component';
 import { LoginComponent } from './data-management/account/login/login.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NewsCategoryComponent } from './data-management/news-management/news-category/news-category.component';
-import {  DialogComponent, NewsInputComponent } from './data-management/news-management/news-input/news-input.component';
+import {  NewsInputComponent } from './data-management/news-management/news-input/news-input.component';
 import { NewsDetailComponent } from './data-management/news-management/news-detail/news-detail.component';
 import { MainPageComponent } from './data-management/news-management/main-page/main-page.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
@@ -53,7 +53,6 @@ import { DialogDeleteComponent } from './data-management/news-management/news-ca
     MainPageComponent,
     ChoiceDialogComponent,
     NotificationDialogComponent,
-    DialogComponent,
     ErrorComponent,
     DialogAddComponent,
     RegisterComponent,

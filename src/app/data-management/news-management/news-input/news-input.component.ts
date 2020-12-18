@@ -1,4 +1,4 @@
-import { Component, Inject, Injectable, Input, OnInit, ViewChild } from '@angular/core';
+import { Component,OnInit, } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../news-category/category.model';
 import { CategoryService } from '../news-category/category.service';
@@ -7,7 +7,9 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SnotifyService } from 'ng-snotify';
 import { Menu } from 'src/app/layouts/main-layout/menu.model';
 import { MenuService } from 'src/app/layouts/main-layout/menu.service';
-import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
+import { NewsService } from '../news.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NewsDTO } from '../news.model';
 
 @Component({
   selector: 'app-news-input',
@@ -16,8 +18,14 @@ import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
 })
 export class NewsInputComponent implements OnInit {
   active:boolean=false;
-  listcategory : Observable<Category[]>;
-  listmenu: Observable<Menu[]>;
+  newsDTO = new NewsDTO();
+  url_image: any;
+  selectedCategory ='';
+  selectedMenu = '';
+  editorContent = '';
+  listCategory: any;
+  listMenu: any;
+  menuId: any;
   animals:string;
   checked=false;
   public Editor = Editor ;
@@ -25,20 +33,13 @@ export class NewsInputComponent implements OnInit {
     private categoryService: CategoryService,
     private dialog : MatDialog,
     private menuService: MenuService,
-    private fb: FormBuilder
+    private newsService: NewsService,
+    private snotifyService: SnotifyService
   ) { }
   ngOnInit(): void {
-    this.listCategory();
-    this.listMenu();
+    this.getAllCategory();
+    this.getAllMenu();
   }
-  formCreateNews=new FormGroup({
-    nameNews: new FormControl(''),
-    selectCategory: new FormControl(''),
-    // chooseMenu: new FormControl(''),
-    checkNewsMain: new FormControl(''),
-    chooseImage : new FormControl(''),
-    ckeditor: new FormControl(''),
-  })
   editorConfig = {
     cloudServices: {
       tokenUrl: 'https://76928.cke-cs.com/token/dev/13a87a8fd6e484e195eae3543653d57318614c7a424dc6b570931d5ecd0e',
@@ -83,58 +84,88 @@ export class NewsInputComponent implements OnInit {
       ]
     },
   }
-  listCategory(){
+  getAllCategory(){
     this.categoryService.getAllCategory().subscribe(
       data =>{
-        this.listcategory=data;
+        this.listCategory=data;
+        console.log(this.listCategory)
       },
       error => console.log(error)
     );
   }
   // list menu
-  listMenu(){
+  getAllMenu(){
     this.menuService.getAllMenu().subscribe(
       data =>{
-        this.listmenu=data;
+        this.listMenu=data;
+        console.log(this.listMenu)
       },
       error => console.log(error)
-    )
+    );
   }
   // show image
-  url="../../../../assets/image/doreamon.jpg";
+  // this.news.="../../../../assets/image/doreamon.jpg";
   onselectFile(e){
-    console.log('hello'+ e);
     if(e.target.files){
       var reader=new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       reader.onload=(event:any)=>{
-        console.log(event.target.result)
-        this.url=event.target.result;
+        this.url_image=event.target.result;
+        this.newsDTO.imagePath = e.target.files[0];
       }
     }
   }
-  // dialog
-  nameinfo:string;
-  openDialog(){
-    this.nameinfo="Bạn có chắc muốn thêm bản tin vào danh sách tin tức?";
-    this.dialog.open(DialogComponent,{
-      data: {nameinfo: this.nameinfo, status: 1}
-    });
+
+  getCategory(selectedCategory){
+    for(let i =0; i < this.listCategory.length; i++){
+      if(selectedCategory === this.listCategory[i].categoryName){
+        this.newsDTO.categoryId = this.listCategory[i].categoryId;
+        console.log(this.newsDTO.categoryId);
+      }
+    }
   }
+
+  getMenu(menuName: any,id: any){
+    this.selectedMenu = menuName;
+    this.menuId = id;
+  }
+
+  addNews(newsDTO:NewsDTO): any{
+    newsDTO.menuId = this.menuId;
+    newsDTO.detail = this.editorContent;
+    this.newsService.addNews(newsDTO).subscribe(
+    data =>{
+      this.snotifyService.success('Thêm tin tức thành công!')
+    },
+    (err : HttpErrorResponse) => {
+      console.log('backend returned code ${err.status}, body was: ${err.error} ');
+      this.snotifyService.error('Thêm loại tin thất bại!');
+    }
+  );
 }
-@Component({
-  selector: 'dialog-component',
-  templateUrl: './dialog.component.html'
-})
-export class DialogComponent implements OnInit{
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { nameinfo: string, status: number}
-  ){}
-  ngOnInit(): void {
 
-  }
+  // dialog
+//   nameinfo:string;
+//   openDialog(){
+//     this.nameinfo="Bạn có chắc muốn thêm bản tin vào danh sách tin tức?";
+//     this.dialog.open(DialogComponent,{
+//       data: {nameinfo: this.nameinfo, status: 1}
+//     });
+//   }
+// }
+// @Component({
+//   selector: 'dialog-component',
+//   templateUrl: './dialog.component.html'
+// })
+// export class DialogComponent implements OnInit{
+//   constructor(
+//     @Inject(MAT_DIALOG_DATA) public data: { nameinfo: string, status: number}
+//   ){}
+//   ngOnInit(): void {
 
-  notifycation(){
-    console.log('đây đây nè');
-  }
+//   }
+
+//   notifycation(){
+//     console.log('đây đây nè');
+//   }
 }

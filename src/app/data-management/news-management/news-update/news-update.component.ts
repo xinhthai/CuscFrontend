@@ -7,7 +7,7 @@ import { CategoryService } from '../news-category/category.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MenuService } from 'src/app/layouts/main-layout/menu.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { DialogComponent } from '../news-input/news-input.component';
+// import { DialogComponent } from '../news-input/news-input.component';
 
 @Component({
   selector: 'app-news-update',
@@ -112,12 +112,12 @@ export class NewsUpdateComponent implements OnInit {
       }
     }
   }
-  // show dialog
-  nameinfo:string;
-  openDialog(){
-    this.nameinfo='Bạn có chắc muốn update thông tin tin tức?';
-    this.dialog.open(DialogComponent,{
-      data: {nameinfo: this.nameinfo, status: 0}
-    });
-  }
+  // // show dialog
+  // nameinfo:string;
+  // openDialog(){
+  //   this.nameinfo='Bạn có chắc muốn update thông tin tin tức?';
+  //   this.dialog.open(DialogComponent,{
+  //     data: {nameinfo: this.nameinfo, status: 0}
+  //   });
+  // }
 }
