@@ -1,4 +1,4 @@
-import { Component,OnInit, } from '@angular/core';
+import { Component,OnInit, ViewChild, } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../news-category/category.model';
 import { CategoryService } from '../news-category/category.service';
@@ -10,6 +10,7 @@ import { MenuService } from 'src/app/layouts/main-layout/menu.service';
 import { NewsService } from '../news.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NewsDTO } from '../news.model';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
   selector: 'app-news-input',
@@ -29,6 +30,7 @@ export class NewsInputComponent implements OnInit {
   animals:string;
   checked=false;
   public Editor = Editor ;
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
   constructor(
     private categoryService: CategoryService,
     private dialog : MatDialog,

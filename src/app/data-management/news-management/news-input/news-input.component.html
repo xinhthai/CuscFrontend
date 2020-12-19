@@ -1,13 +1,21 @@
 <div class="container">
   <div class="post-news-button">Đăng tin mới</div>
   <form #addNewsForm="ngForm">
-    <div class="col-xl-8" style="margin-left: 140px;">
+    <div class="col-xl-8" style="margin-left: 140px; margin-top: 50px;">
       <div class="input-item">
         <h3>Tiêu đề tin</h3>
         <p class="alert alert-success">Chọn tiêu đề phù hợp cho bản tin. Tiêu đề tin không nên quá dài và chứa các ký tự đặc biệt.</p>
         <mat-form-field>
           <mat-label>Tên tin</mat-label>
           <input matInput [(ngModel)]="newsDTO.title" name="title">
+        </mat-form-field>
+      </div>
+      <div class="input-item">
+        <h3>Mô tả tin</h3>
+        <p class="alert alert-success">Mô tả nội dung tổng quát của tin. Phần mô tả được giới hạn trong 150 ký tự</p>
+        <mat-form-field>
+          <mat-label>Mô tả</mat-label>
+          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="8"></textarea>
         </mat-form-field>
       </div>
       <div class="input-item">
@@ -27,17 +35,17 @@
         <mat-menu type="button" #menu="matMenu" [overlapTrigger]="false">
           <span *ngFor="let item of listMenu">
             <span *ngIf="item.submenu && item.submenu.length>0">
-              <button mat-menu-item [matMenuTriggerFor]="childmenu" >
+              <button mat-menu-item [matMenuTriggerFor]="childmenu" (click)="getMenu(item.name,item.menuId)">
                 {{item.name}}
               </button>
               <mat-menu #childmenu="matMenu">
                 <span *ngFor="let child of item.submenu">
-                  <button mat-menu-item >{{child.name}}</button>
+                  <button mat-menu-item (click)="getMenu(child.name,child.menuId)">{{child.name}}</button>
                 </span>
               </mat-menu>
             </span>
             <span *ngIf="!item.submenu || item.submenu.length===0">
-              <button mat-menu-item >
+              <button mat-menu-item (click)="getMenu(item.name,item.menuId)">
                 {{item.name}}
               </button>
             </span>
@@ -47,7 +55,7 @@
       <div class="input-item">
         <mat-form-field>
           <mat-label>Loại tin</mat-label>
-          <input matInput [(ngModel)] ="selectedMenu" name="selectedMenu">  
+          <input matInput [(ngModel)] ="selectedMenu" name="selectedMenu">
         </mat-form-field>
       </div>
       <div class="input-item">

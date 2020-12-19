@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NewsDTO } from './news.model';
+import { NewsDTO, ViewNewsDTO } from './news.model';
 
 const URL='http://localhost:3000/api/news';
 const httpOptions = {
@@ -25,5 +25,8 @@ export class NewsService {
     formData.append('categoryId',String(news.categoryId));
     formData.append('menuId',String(news.menuId));
     return this.http.post(`${URL}`,formData)
+  }
+  getAllNewsByTitle(): Observable<any>{
+    return this.http.get("http://localhost:3000/api/news/titles",httpOptions);
   }
 }
