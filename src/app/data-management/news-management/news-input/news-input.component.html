@@ -15,7 +15,7 @@
         <p class="alert alert-success">Mô tả nội dung tổng quát của tin. Phần mô tả được giới hạn trong 150 ký tự</p>
         <mat-form-field>
           <mat-label>Mô tả</mat-label>
-          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="8"></textarea>
+          <textarea [(ngModel)]="newsDTO.shortContent" name="shortContent" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="8"></textarea>
         </mat-form-field>
       </div>
       <div class="input-item">

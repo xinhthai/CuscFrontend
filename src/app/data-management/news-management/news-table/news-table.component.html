@@ -32,12 +32,14 @@
         </ng-container>
         <ng-container matColumnDef="detail">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Chi tiết</th>
-          <td mat-cell *matCellDef="let element"><button mat-raised-button>detail</button></td>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button (click)="detailNews(element.newsId)">detail</button>
+          </td>
         </ng-container>
         <ng-container matColumnDef="deleteNews">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Xóa tin</th>
           <td mat-cell *matCellDef="let element">
-            <button mat-raised-button>x</button>
+            <button mat-raised-button (click)="deleteNews(element.newsId)">x</button>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayColumn; sticky: true"></tr>

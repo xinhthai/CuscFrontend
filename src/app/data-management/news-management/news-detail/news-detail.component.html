@@ -1,1 +1,84 @@
-<p>news-detail works!</p>
+<div class="container">
+  <div class="post-news-button">Đăng tin mới</div>
+  <form #addNewsForm="ngForm">
+    <div class="col-xl-8" style="margin-left: 140px; margin-top: 50px;">
+      <div class="input-item">
+        <h3>Tiêu đề tin</h3>
+        <p class="alert alert-success">Chọn tiêu đề phù hợp cho bản tin. Tiêu đề tin không nên quá dài và chứa các ký tự đặc biệt.</p>
+        <mat-form-field>
+          <mat-label>Tên tin</mat-label>
+          <input matInput [(ngModel)]="newsDTO.title" name="title">
+        </mat-form-field>
+      </div>
+      <div class="input-item">
+        <h3>Mô tả tin</h3>
+        <p class="alert alert-success">Mô tả nội dung tổng quát của tin. Phần mô tả được giới hạn trong 150 ký tự</p>
+        <mat-form-field>
+          <mat-label>Mô tả</mat-label>
+          <textarea [(ngModel)]="newsDTO.shortContent" [ngModelOptions]="{standalone: true}" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="8"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="input-item">
+        <h3>Chuyên mục tin</h3>
+        <p class="alert alert-success">Chọn một chuyên mục cho bản tin.Nhấn vào đây nếu bạn muốn thêm chuyên mục tin.</p>
+        <mat-form-field appearance="fill" style="width: 620px;">
+          <mat-label>Chuyên mục tin</mat-label>
+          <mat-select [(ngModel)]="selectedCategory" (selectionChange)="getCategory(selectedCategory)" [(ngModel)]="selected" name="category">
+            <mat-option *ngFor="let item of listCategory" [value]="item.categoryId">{{item.categoryName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input-item">
+        <h3>Chọn loại tin cho bản tin</h3>
+        <p class="alert alert-success">Mỗi bản tin sẽ thuộc vào một loại tin. Vui lòng click chọn loại cho bản tin.</p>
+        <button mat-raised-button [matMenuTriggerFor]="menu">Loại tin</button>
+        <mat-menu type="button" #menu="matMenu" [overlapTrigger]="false">
+          <span *ngFor="let item of listMenu">
+            <span *ngIf="item.submenu && item.submenu.length>0">
+              <button mat-menu-item [matMenuTriggerFor]="childmenu" (click)="getMenu(item.name,item.menuId)">
+                {{item.name}}
+              </button>
+              <mat-menu #childmenu="matMenu">
+                <span *ngFor="let child of item.submenu">
+                  <button mat-menu-item (click)="getMenu(child.name,child.menuId)">{{child.name}}</button>
+                </span>
+              </mat-menu>
+            </span>
+            <span *ngIf="!item.submenu || item.submenu.length===0">
+              <button mat-menu-item (click)="getMenu(item.name,item.menuId)">
+                {{item.name}}
+              </button>
+            </span>
+          </span>
+        </mat-menu>
+      </div>
+      <div class="input-item">
+        <mat-form-field>
+          <mat-label>Loại tin</mat-label>
+          <input matInput [(ngModel)] ="selectedMenu" name="selectedMenu">
+        </mat-form-field>
+      </div>
+      <div class="input-item">
+        <h3>Xác nhận tin chính</h3>
+        <p class="alert alert-success">Mỗi loại tin chỉ hiển thị duy nhất một tin chính. Vui lòng xác nhận đây có phải là tin chính của loại tin này không?</p>
+        <mat-checkbox color="primary" [(ngModel)]="newsDTO.mainNews" name="check">Tin chính</mat-checkbox>
+      </div>
+      <div class="input-item">
+        <h3>Hình ảnh chính:</h3>
+        <p class="alert alert-success">Hình ảnh chính của bản tin sẽ thể hiện như tiêu đề của bản tin.</p>
+        <img [(src)]="url_image" name="imagePath" height="200px" width="200px" >
+        <input type="file" (change)="onselectFile($event)" style="width: 400px; display: inline-block; float: right;">
+
+      </div>
+      <div>
+        <h3>Nội dung tin</h3>
+      </div>
+      <ckeditor [editor]="Editor" [config] ="editorConfig" [(ngModel)]="editorContent" name="editorContent"></ckeditor>
+    </div>
+      <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <!-- button gui tin danh cho nguoi viet tin sau khi gui tin, tin tuc se dươc chuyen sang trang cua nguoi quan tri duyet tin, nguoi dang  -->
+        <!-- <button mat-raised-button [ngStyle]="{'display': active == true ? 'block' : 'none'}">Gửi tin</button> -->
+        <button mat-raised-button color="primary" (click)="addNews(newsDTO)">Save</button>
+      </div>
+  </form>
+</div>

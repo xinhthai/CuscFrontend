@@ -3,6 +3,7 @@ import { Byte } from "@angular/compiler/src/util";
 export class NewsDTO{
   newsId: number;
   title: string = '';
+  shortContent: string;
   detail: string;
   createdDate: Date;
   menuId: number;
@@ -10,8 +11,13 @@ export class NewsDTO{
   userId: string;
   mainNews: boolean;
   imagePath: File;
+  status: boolean;
 }
-export class ViewNewsDTO{
+export class NewsViewDTO{
   newsId: number;
   title: string;
+  shortContent: string;
+  imagePath: File;
+  categoryName: string;
+  status: boolean;
 }

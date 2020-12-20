@@ -1,11 +1,11 @@
 import { Route } from '@angular/compiler/src/core';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { title } from 'process';
-import { ViewNewsDTO } from '../news.model';
+import { EventEmitter } from 'events';
+import { NewsViewDTO} from '../news.model';
 import { NewsService } from '../news.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class NewsTableComponent implements OnInit{
   // viewNews: ViewNewsDTO;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource :MatTableDataSource<ViewNewsDTO>;
+  dataSource :MatTableDataSource<NewsViewDTO>;
   displayColumn:string[]=['title','dateCreate','category','checknews','detail','deleteNews'];
   constructor(
     private router: Router,
@@ -50,5 +50,27 @@ export class NewsTableComponent implements OnInit{
     if(this.dataSource.paginator){
       this.dataSource.paginator.firstPage();
     }
+  }
+  deleteNews(id){
+    console.log(id);
+    this.newsService.deleteNewsById(id).subscribe(
+      data =>{
+        console.log('Đã xóa tin thành công!');
+      },
+      error => console.log(error)
+    )
+  }
+  id:number;
+  detailNews(id){
+    this.id=id;
+    this.router.navigate(['/admin/news/detail/',id]).then(
+      e =>{
+        if(e){
+          console.log("Chuyen route thanh cong!");
+        }else {
+          console.log("Chuyển route không thanh công");
+        }
+      }
+    )
   }
 }

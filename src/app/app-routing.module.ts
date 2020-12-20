@@ -58,6 +58,10 @@ import { NewsUpdateComponent } from './data-management/news-management/news-upda
                   {
                     path: 'edit-news',
                     component: NewsUpdateComponent
+                  },
+                  {
+                    path: 'detail/:id',
+                    component: NewsDetailComponent
                   }
                 ]
               },

@@ -1,0 +1,19 @@
+.input-item{
+  margin-bottom: 30px;
+  h3{
+    font : {
+      size: 17px;
+    }
+  }
+  input{
+    width: 100%;
+    height: 40px;
+  }
+}
+:host ::ng-deep .ck-editor__editable_inline {
+  min-height: 500px;
+}
+
+.mat-form-field{
+  width: 620px !important;
+}

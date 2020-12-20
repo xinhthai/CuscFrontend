@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NewsDTO, ViewNewsDTO } from './news.model';
+import { NewsDTO} from './news.model';
 
 const URL='http://localhost:3000/api/news';
 const httpOptions = {
@@ -18,6 +18,7 @@ export class NewsService {
     console.log(news);
     const formData = new FormData();
     formData.append('newsId','');
+    formData.append('shortContent',news.shortContent);
     formData.append('title',news.title);
     formData.append('detail',news.detail);
     formData.append('imagePath',news.imagePath);
@@ -27,6 +28,14 @@ export class NewsService {
     return this.http.post(`${URL}`,formData)
   }
   getAllNewsByTitle(): Observable<any>{
-    return this.http.get("http://localhost:3000/api/news/titles",httpOptions);
+    return this.http.get("http://localhost:3000/api/news/view",httpOptions);
+  }
+
+  deleteNewsById(id): Observable<any>{
+    console.log(id);
+    return this.http.delete(`${URL}/${id}`,httpOptions);
+  }
+  getDetailNews(id):Observable<any>{
+    return this.http.get(`${URL}/${id}`,httpOptions);
   }
 }
