@@ -19,7 +19,7 @@ export class NewsDetailComponent implements OnInit {
   active:boolean=false;
   newsDTO = new NewsDTO();
   url_image: any;
-  directory_url= "../../../../assets/news_images";
+  directory_url= "../../../../assets/news_images/";
   selectedCategory ='';
   selectedMenu = '';
   editorContent = '';
@@ -160,7 +160,9 @@ export class NewsDetailComponent implements OnInit {
     this.selectedMenu = menuName;
     this.menuId = id;
   }
+  updateNews(newsDTO: NewsDTO):any{
 
+  }
   addNews(newsDTO:NewsDTO): any{
     newsDTO.menuId = this.menuId;
     newsDTO.detail = this.editorContent;

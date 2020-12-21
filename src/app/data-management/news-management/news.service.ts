@@ -38,4 +38,14 @@ export class NewsService {
   getDetailNews(id):Observable<any>{
     return this.http.get(`${URL}/${id}`,httpOptions);
   }
+  changeStatusNews(id,status):Observable<any>{
+    return this.http.put(`${URL}/${id}`,'',{
+      params: new HttpParams().set('status',status)
+    });
+  }
+  getListNewByCategoryId(id):Observable<any>{
+    return this.http.get("http://localhost:3000/api/news/type",{
+      params: new HttpParams().set('categoryId',id)
+    });
+  }
 }

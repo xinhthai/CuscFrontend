@@ -1,0 +1,32 @@
+#list-news{
+  margin-top: 50px;
+  #news-name{
+    background: #B032;
+    color: #B03234;
+    padding: 3px;
+    text-align: center;
+  }
+  .news-body{
+    margin-top: 20px;
+    .main-news{
+      height: 300px;
+      .main-image{
+        display: inline-block;
+      }
+      .content{
+        float: right;
+        .subscription{
+          margin-top: 13px;
+          height: 150px;
+        }
+      }
+    }
+    .second-news{
+      margin-top: 20px;
+      .second-name{
+        margin-top: 10px;
+      }
+    }
+  }
+
+}

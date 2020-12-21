@@ -30,7 +30,8 @@ $main_color: #B03234;
 	margin-bottom: 10px;
 }
 .main-service{
-	margin-top: 25px;
+  margin-top: 25px;
+  display: inline-block;
 }
 .section-title{
 	background: white;
@@ -76,21 +77,31 @@ $main_color: #B03234;
 }
 .blog-main{
 	background: none repeat scroll 0 0 #f2f2f2;
-	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.09), 0 2px 5px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.09), 0 2px 5px rgba(0, 0, 0, 0.09);
+  .blog-thumb{
+    img{
+      height: 100%;
+      width: 100%;
+      border-radius: 3px 3px 3px 3px;
+      border: 1px solid #CCC;
+    }
+
+  }
 }
 .blog-name{
   overflow: hidden;
   text-transform: uppercase;
   padding-top: 5px;
+  margin-top: 10px;
+  height: 60px;
   text-align: center;
-}
-.blog-name h4{
-	padding-left: 10px;
-	padding-top: 12px;
-	color: #B03234;
-	font-size: 13px;
-	padding-bottom: 10px;
-
+  h4{
+    padding-left: 10px;
+    padding-top: 12px;
+    color: $main_color;
+    font-size: 13px;
+    padding-bottom: 10px;
+  }
 }
 .blog-img{
 	float: left;
@@ -156,9 +167,10 @@ $main_color: #B03234;
 .second-news{
   background-color: #ededed;
   margin-top: 57px;
-  height: 438px;
+  height: 400px;
   overflow: hidden;
   border-top: 3px solid $main_color;
+  float: right;
   .news-item-title{
     border-bottom: 1px solid #b2b2b2;
     padding-bottom: 15px;

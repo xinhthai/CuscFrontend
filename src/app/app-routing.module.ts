@@ -11,6 +11,8 @@ import { MainPageComponent } from './data-management/news-management/main-page/m
 import { ErrorComponent } from './data-management/error/error.component';
 import { RegisterComponent } from './data-management/account/register/register.component';
 import { NewsUpdateComponent } from './data-management/news-management/news-update/news-update.component';
+import { MainListNewsComponent } from './data-management/news-management/main-page/main-list-news/main-list-news.component';
+import { MainNewsDetailComponent } from './data-management/news-management/main-page/main-news-detail/main-news-detail.component';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
@@ -23,8 +25,12 @@ import { NewsUpdateComponent } from './data-management/news-management/news-upda
             component: MainPageComponent,
           },
           {
-            path:'detail/:id',
-            component: NewsDetailComponent
+            path:'listnews/:id',
+            component: MainListNewsComponent
+          },
+          {
+            path:'newsdetail/:id',
+            component: MainNewsDetailComponent
           }
         ]
       },
@@ -82,15 +88,15 @@ import { NewsUpdateComponent } from './data-management/news-management/news-upda
             ]
           }
         ]
-      },
-      {
-        path: '404',
-        component: ErrorComponent
-      },
-      {
-        path: '**',
-        redirectTo: '/404'
       }
+      // {
+      //   path: '404',
+      //   component: ErrorComponent
+      // },
+      // {
+      //   path: '**',
+      //   redirectTo: '/404'
+      // }
 
     ]
   )],

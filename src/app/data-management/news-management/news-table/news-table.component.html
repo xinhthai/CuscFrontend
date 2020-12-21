@@ -20,7 +20,7 @@
         </ng-container>
         <ng-container matColumnDef="category">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Chuyên mục</th>
-          <td mat-cell *matCellDef="let element">Tin tuyển sinh</td>
+          <td mat-cell *matCellDef="let element">{{element.categoryName}}</td>
         </ng-container>
         <ng-container matColumnDef="dateCreate">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Ngày tạo</th>
@@ -28,7 +28,10 @@
         </ng-container>
         <ng-container matColumnDef="checknews">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Tin đã duyệt</th>
-          <td mat-cell *matCellDef="let element">v</td>
+          <td mat-cell *matCellDef="let element">
+            <button mat-stroked-button (click)="updateStatus(element.newsId,false)" color="primary" [ngStyle]="{'display': element.status===true ? 'block' : 'none'}">True</button>
+            <button mat-stroked-button (click)="updateStatus(element.newsId,true)" color="warn" [ngStyle]="{'display': element.status===false ? 'block' : 'none'}">False</button>
+          </td>
         </ng-container>
         <ng-container matColumnDef="detail">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Chi tiết</th>
@@ -39,7 +42,7 @@
         <ng-container matColumnDef="deleteNews">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Xóa tin</th>
           <td mat-cell *matCellDef="let element">
-            <button mat-raised-button (click)="deleteNews(element.newsId)">x</button>
+            <button mat-raised-button (click)="deleteNewsDialog(element.newsId)">x</button>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayColumn; sticky: true"></tr>

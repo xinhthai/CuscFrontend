@@ -35,6 +35,9 @@ import { RegisterComponent } from './data-management/account/register/register.c
 import { DialogUpdateComponent } from './data-management/news-management/news-category/dialog-update/dialog-update.component';
 import { NewsUpdateComponent } from './data-management/news-management/news-update/news-update.component';
 import { DialogDeleteComponent } from './data-management/news-management/news-category/dialog-delete/dialog-delete.component';
+import { DialogChangeStatusComponent } from './data-management/news-management/news-table/dialog-change-status/dialog-change-status.component';
+import { MainListNewsComponent } from './data-management/news-management/main-page/main-list-news/main-list-news.component';
+import { MainNewsDetailComponent } from './data-management/news-management/main-page/main-news-detail/main-news-detail.component';
 @NgModule({
   declarations: [
     MainComponent,
@@ -58,7 +61,10 @@ import { DialogDeleteComponent } from './data-management/news-management/news-ca
     RegisterComponent,
     DialogUpdateComponent,
     NewsUpdateComponent,
-    DialogDeleteComponent
+    DialogDeleteComponent,
+    DialogChangeStatusComponent,
+    MainListNewsComponent,
+    MainNewsDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -89,7 +89,7 @@ export class NewsCategoryComponent implements OnInit , OnDestroy{
   }
   deleteDialog(id){
     this.dialog.open(DialogDeleteComponent,{
-      data: {id: id}
+      data: {id: id, type: 'category'}
     })
   }
 }

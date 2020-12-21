@@ -1,0 +1,16 @@
+<div [ngStyle]="{'display': data.status===true ? 'block' : 'none'}">
+  <div>Đăng tin</div>
+  <div class="alert alert-success" style="width: 418px;">
+    Sau khi thay đổi trạng thái của tin tức thành True tin tức sẽ được hiển thị trên trang chủ. Bạn có chắc muốn đăng tin này?
+  </div>
+    <button mat-raised-button (click)="CloseDialog()">Close</button>
+    <button mat-raised-button (click)="ChangeStatusNews()" style="margin-left: 20px;">Post News</button>
+</div>
+<div [ngStyle]="{'display': data.status===false ? 'block' : 'none'}">
+  <div>Gỡ tin</div>
+  <div class="alert alert-success" style="width: 418px;">
+    Sau khi thay đổi trạng thái của tin này thành False, tin sẽ được gỡ khỏi trang chủ. Bạn có chắc muốn gỡ tin này?
+  </div>
+    <button mat-raised-button (click)="CloseDialog()">Close</button>
+    <button mat-raised-button (click)="ChangeStatusNews()" style="margin-left: 20px;">Remove</button>
+</div>

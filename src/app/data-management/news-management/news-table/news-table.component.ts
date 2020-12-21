@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
 import { EventEmitter } from 'events';
 import { NewsViewDTO} from '../news.model';
 import { NewsService } from '../news.service';
-
+import {MatDialog} from '@angular/material/dialog';
+import { DialogDeleteComponent } from '../news-category/dialog-delete/dialog-delete.component';
+import { DialogChangeStatusComponent } from './dialog-change-status/dialog-change-status.component';
 @Component({
   selector: 'app-news-table',
   templateUrl: './news-table.component.html',
@@ -22,7 +24,8 @@ export class NewsTableComponent implements OnInit{
   displayColumn:string[]=['title','dateCreate','category','checknews','detail','deleteNews'];
   constructor(
     private router: Router,
-    private newsService: NewsService
+    private newsService: NewsService,
+    private dialog: MatDialog
   ) { }
 
 
@@ -51,15 +54,7 @@ export class NewsTableComponent implements OnInit{
       this.dataSource.paginator.firstPage();
     }
   }
-  deleteNews(id){
-    console.log(id);
-    this.newsService.deleteNewsById(id).subscribe(
-      data =>{
-        console.log('Đã xóa tin thành công!');
-      },
-      error => console.log(error)
-    )
-  }
+
   id:number;
   detailNews(id){
     this.id=id;
@@ -72,5 +67,17 @@ export class NewsTableComponent implements OnInit{
         }
       }
     )
+  }
+  // delete news dialog
+  deleteNewsDialog(id){
+    this.dialog.open(DialogDeleteComponent,{
+      data: {id: id, type: 'news'}
+    })
+  }
+  // dialog xac nhan thay doi status tin tuc
+  updateStatus(id,status){
+    this.dialog.open(DialogChangeStatusComponent,{
+      data: {id: id, status: status}
+    })
   }
 }

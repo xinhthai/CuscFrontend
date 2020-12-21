@@ -17,7 +17,8 @@ export class NewsViewDTO{
   newsId: number;
   title: string;
   shortContent: string;
-  imagePath: File;
+  imagePath: string;
   categoryName: string;
   status: boolean;
+  mainNews: boolean;
 }

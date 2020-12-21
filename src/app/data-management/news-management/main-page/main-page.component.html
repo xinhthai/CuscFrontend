@@ -212,62 +212,57 @@
   </div>
 
 </section>
+
 <!-- news -->
 <section class="service-section">
   <div class="container">
     <div class="event-title text-center">
       <h3>tin tức</h3>
     </div>
-    <div class="row">
-
-      <div class="col-xl-8 main-service">
-        <div class="section-title text-center">
-          <span class="corner">Tin tuyển sinh</span>
-        </div>
-        <div class="blog-main">
-          <div class="blog-item" style="height: 432px;">
-            <div class="blog-name">
-              <a href="#">Công nghệ hiện đại, đừng ngại học ngay - Ưu đãi quà tặng mừng ngày Nhà giáo việt nam</a>
+      <span *ngFor="let category of listCategory">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="col-xl-8 main-service">
+              <div class="section-title text-center">
+                <span class="corner">{{category.categoryName}}</span>
+              </div>
+              <span *ngFor="let news of listNews">
+                <span *ngIf="news.categoryName===category.categoryName && news.mainNews===true && news.status===true">
+                  <div class="blog-main">
+                    <div class="blog-item" style="height: 400px; overflow: hidden;">
+                      <div class="blog-name">
+                        <a href="#">{{news.title}}</a>
+                      </div>
+                      <div class="blog-thumb col-xl-5" style="display: inline-block; float: left; margin-top: 9px; margin-left: 8px;">
+                        <a href="#">
+                          <img src="../../../../assets/news_images/{{news.imagePath}}" alt="image-not-found">
+                        </a>
+                      </div>
+                      <div class="blog-content col-xl-7">
+                        {{news.shortContent}}
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </span>
             </div>
-            <div class="blog-thumb" style="display: inline-block; float: left; margin-top: 9px; margin-left: 8px;">
-              <a href="#">
-                <img src="../../assets/image/637380848273737481527.png" alt="image-not-found">
-              </a>
-            </div>
-            <div class="blog-content">
-              Trong những ngày cuối tháng tư vừa qua, Aptech Computer Education tổ chức cuộc thi công nghệ TECHTRONS - trên quy mô 100 trung tâm đào tạo Lập trình tại 15 quốc gia nhằm gắn kết giữa các học viên và lan toả tinh thần tích cực trong cộng đồng. Cuộc thi đã khẳng định trí tuệ và bản lĩnh của các bạn trẻ ...
+            <div class="col-xl-4 second-news">
+              <span *ngFor="let news of listNews">
+                <span *ngIf="news.categoryName===category.categoryName && news.mainNews===false && news.status===true">
+                  <a href="#">
+                    <div class="news-item-title">
+                      {{news.title}}
+                    </div>
+                  </a>
+                </span>
+            </span>
             </div>
           </div>
         </div>
-
-      </div>
-      <div class="col-xl-4 second-news">
-        <div>
-          <a href="#">
-            <div class="news-item-title">
-              Ưu đãi đến 20% học phí: “Tăng tốc đến thành công”
-            </div>
-          </a>
+        <div class="col-xl-12 button-extend">
+          <input class="button-news-extend" (click)="onMoreNews(category.categoryId)" type="button" value="Xem thêm tin">
         </div>
-        <div>
-          <a href="#">
-            <div class="news-item-title">
-              Ưu đãi đến 20% học phí: “Tăng tốc đến thành công”
-            </div>
-          </a>
-        </div>
-        <div>
-          <a href="#">
-            <div class="news-item-title">
-              Ưu đãi đến 20% học phí: “Tăng tốc đến thành công”
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xl-12 button-extend">
-        <input class="button-news-extend" (click)="onMoreNews(1)" type="button" value="Xem thêm tin">
-      </div>
-      <div class="row-bottom"></div>
-    </div>
+        <div class="row-bottom"></div>
+    </span>
   </div>
 </section>
