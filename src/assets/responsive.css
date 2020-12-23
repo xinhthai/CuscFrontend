@@ -1,0 +1,341 @@
+body,html{
+  width: 100%;
+}
+@media (min-width: 1200px){
+  .container{
+    width: 72% !important;
+    margin-left: 8% !important;
+  }
+}
+/* medium screen 992px lg */
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+  .sticky-nav-wrapper{
+    width: 106% !important;
+  }
+  .container{
+    width: 70% !important;
+    margin-left: 9% !important;
+  }
+  /* calender */
+  #calendar-fixed{
+    display: block;
+    margin-left: 68% !important;
+  }
+  .social-fixed{
+    margin-left: -77px;
+  }
+  .box-advanted{
+    height: 800px !important;
+  }
+  /* teacher */
+  .teacher-item{
+    margin-left: 0px !important;
+  }
+  .teacher-info{
+    margin-left: 0px !important;
+    float: right;
+  }
+  .teacher-image{
+    display: inline-block;
+  }
+  /* news */
+  .blog-item{
+    height: 600px !important;
+  }
+  .blog-name{
+    height: 110px !important;
+    font-size: 17px;
+  }
+  .blog-thumb{
+    margin-left: 0px !important;
+  }
+  .blog-content{
+    height: 217px !important;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  .second-news{
+    height: 600px !important;
+    font-size: 18px;
+  }
+}
+/* tablet 768px md */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+  #calendar-fixed{
+    display: none;
+  }
+
+  #logo-ctu{
+    width: 100%;
+    display: none;
+  }
+  #image_header{
+    height: 150px;
+  }
+  #banner-aptech{
+    width: 100%;
+  }
+  .container{
+    width: 100% !important;
+    max-width: 100%;
+    margin-left: 0 !important;
+  }
+  .social-fixed{
+    display: none;
+  }
+  .navbar-toggler{
+    background: #B03234;
+  }
+  .teacher{
+    display: none;
+  }
+  .advanted{
+    height: 800px;
+  }
+  .service-item:last-child{
+    display: none;
+  }
+  .last-item{
+    margin-left: -22%;
+  }
+  .event-title{
+    margin-bottom: 0;
+    margin-top: 60px !important;
+    margin-bottom: 0px !important;
+  }
+  .blog-item{
+    height: 544px !important;
+  }
+  .blog-main{
+    height: 548px;
+
+  }
+  .blog-main img{
+    width: 80% !important;
+    margin-left: 10% !important;
+  }
+  .blog-name{
+    font-size: 17px;
+    height: 110px !important;
+  }
+  .blog-thumb{
+    margin-left: 0px !important;
+  }
+  .blog-thumb img{
+    height: 150px !important;
+  }
+  .blog-content{
+    height: 213px !important;
+    margin-top: 30px;
+    width: 100% !important;
+  }
+  .second-news{
+    font-size: 16px;
+    height: 550px !important;
+    margin-top: 58px !important;
+  }
+  .news-of-category{
+    height: 670px;
+  }
+  .footer_link h2{
+    font-size: 18px;
+  }
+  .button-extend{
+    margin-top: 0px !important;
+  }
+}
+/* large mobile: 480px sm */
+@media only screen and (min-width: 576px) and (max-width: 767px){
+  /* header */
+  #logo-ctu{
+    width: 100%;
+    display: none;
+  }
+  #calendar-fixed{
+    display: none;
+  }
+  #image_header{
+    height: 123px;
+  }
+  .banner-ap{
+    padding-top: 20px !important;
+  }
+  #banner-aptech{
+    width: 100%;
+  }
+  .container{
+    width: 100% !important;
+    max-width: 100%;
+    margin-left: 0 !important;
+  }
+  .social-fixed{
+    display: none;
+  }
+  .navbar-toggler{
+    background: #B03234 !important;
+    font-size: 15px !important;
+  }
+  .teacher{
+    display: none;
+  }
+  .advanted{
+    display: none;
+  }
+  /*  */
+  .event-title h3{
+    margin-bottom: 34px !important;
+  }
+  .service-item:last-child{
+    display: none;
+  }
+  .last-item{
+    margin-left: -22%;
+  }
+  .event-title{
+    margin-bottom: 0;
+    margin-top: 60px !important;
+    margin-bottom: 0px !important;
+  }
+  .blog-item{
+    height: 355px !important;
+  }
+  .blog-name{
+    font-size: 15px;
+    height: 70px !important;
+  }
+  .blog-thumb{
+    margin-left: 0px !important;
+  }
+  .blog-content{
+    height: 106px;
+    width: 100% !important;
+  }
+  .second-news{
+    font-size: 14px;
+    margin-top: 15px !important;
+    height: 400px !important;
+  }
+  .news-of-category{
+    height: 670px;
+  }
+  .footer_link h2{
+    font-size: 18px;
+  }
+  /* button */
+  .button-extend{
+    margin-top: 180px !important;
+  }
+  .menu-sm-button{
+    position: fixed;
+    margin-top: 44px;
+    margin-left: 20px;
+    top: 0px;
+  }
+  .main-service{
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+  }
+  .news-of-category{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+/* small mobile: 320px */
+@media only screen and (max-width: 576px){
+  #logo-ctu{
+    width: 100%;
+    display: none;
+  }
+  #calendar-fixed{
+    display: none;
+  }
+  #image_header{
+    height: 123px;
+  }
+  .banner-ap{
+    padding-top: 20px !important;
+  }
+  #banner-aptech{
+    width: 100%;
+  }
+  .container{
+    width: 100% !important;
+    max-width: 100%;
+    margin-left: 0 !important;
+  }
+  .social-fixed{
+    display: none;
+  }
+  .navbar-toggler{
+    background: #B03234 !important;
+    font-size: 15px !important;
+  }
+  .teacher{
+    display: none;
+  }
+  .advanted{
+    display: none;
+  }
+  /*  */
+  .event-title h3{
+    margin-bottom: 34px !important;
+  }
+  .event-title{
+    margin-bottom: 0;
+    margin-top: 60px !important;
+    margin-bottom: 0px !important;
+  }
+  .blog-item{
+    height: 300px !important;
+  }
+  .blog-name{
+    font-size: 15px;
+    height: 70px !important;
+  }
+  .blog-thumb{
+    margin-left: 0px !important;
+  }
+  .last-item{
+    display: none;
+  }
+  .service-item:last-child{
+    margin-bottom: 0px !important;
+  }
+  .blog-content{
+    height: 106px;
+    width: 100% !important;
+  }
+  .second-news{
+    font-size: 14px;
+    margin-top: 15px !important;
+    height: 343px !important;
+  }
+  .news-of-category{
+    height: 670px;
+  }
+  .footer_link h2{
+    font-size: 18px;
+  }
+  /* button */
+  .button-extend{
+    margin-top: 95px !important;
+  }
+  .button-news-extend{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .menu-sm-button{
+    position: fixed;
+    margin-top: 44px;
+    margin-left: 20px;
+    top: 0px;
+  }
+  .main-service{
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+  }
+  .news-of-category{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}

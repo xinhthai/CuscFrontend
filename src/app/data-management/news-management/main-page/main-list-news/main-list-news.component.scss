@@ -1,15 +1,18 @@
+$main-color: #B03234;
 #list-news{
   margin-top: 50px;
+  height: 638px;
   #news-name{
     background: #B032;
-    color: #B03234;
+    color:$main-color;
     padding: 3px;
     text-align: center;
   }
   .news-body{
     margin-top: 20px;
     .main-news{
-      height: 300px;
+      border-bottom: 1px solid $main-color;
+      height: 280px;
       .main-image{
         display: inline-block;
       }
@@ -29,4 +32,7 @@
     }
   }
 
+}
+.my-pagination .ngx-pagination .current {
+  background: red;
 }

@@ -31,10 +31,15 @@ export class DialogChangeStatusComponent implements OnInit {
     }
     this.newsService.changeStatusNews(this.data.id, this.data.status).subscribe(
       data =>{
+
         this.snotifyService.info(this.message);
         this.dialog.closeAll();
+        this.reload();
       },
       error =>console.log(error)
     );
+  }
+  reload(){
+    setTimeout("window.location.reload(true);",3000);
   }
 }

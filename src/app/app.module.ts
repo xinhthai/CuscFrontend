@@ -38,6 +38,18 @@ import { DialogDeleteComponent } from './data-management/news-management/news-ca
 import { DialogChangeStatusComponent } from './data-management/news-management/news-table/dialog-change-status/dialog-change-status.component';
 import { MainListNewsComponent } from './data-management/news-management/main-page/main-list-news/main-list-news.component';
 import { MainNewsDetailComponent } from './data-management/news-management/main-page/main-news-detail/main-news-detail.component';
+import { SizeDectectorComponent } from './size-dectector/size-dectector.component';
+import {ResponsiveModule} from 'ngx-responsive';
+const config={
+  breakPoints: {
+    xs: {max: 575},
+    sm: {min: 576, max: 767},
+    md: {min: 768, max: 991},
+    lg: {min: 992, max: 1199},
+    xl: {min: 1200}
+  },
+  debounceTime: 100
+};
 @NgModule({
   declarations: [
     MainComponent,
@@ -64,7 +76,8 @@ import { MainNewsDetailComponent } from './data-management/news-management/main-
     DialogDeleteComponent,
     DialogChangeStatusComponent,
     MainListNewsComponent,
-    MainNewsDetailComponent
+    MainNewsDetailComponent,
+    SizeDectectorComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +93,8 @@ import { MainNewsDetailComponent } from './data-management/news-management/main-
     MatSelectModule,
     DemoMaterialModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ResponsiveModule.forRoot(config)
   ],
   providers: [{provide:'SnotifyToastConfig', useValue: ToastDefaults },SnotifyService],
   bootstrap: [MainComponent]
