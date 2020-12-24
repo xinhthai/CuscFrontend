@@ -1,6 +1,6 @@
 <div class="sticky-nav-wrapper">
   <nav id="navbar" class="main-navigation navbar navbar-fixed-top navbar-expand-lg navbar-light sticky-nav" ngStickyNav>
-    <button class='navbar-toggler menu-sm-button' type='button' data-toggle='collapse' href='#collapsibleNavbar' aria-controls='#collapsibleNavbar'>
+    <button class='navbar-toggler menu-sm-button'  type='button' data-toggle='collapse' href='#collapsibleNavbar1' aria-controls='#collapsibleNavbar'>
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class='container collapse navbar-collapse' id='collapsibleNavbar' style='display: none;'>
@@ -22,12 +22,14 @@
     <!-- menu fixed mobile -->
   </nav>
 </div>
-<!-- <div class="menu-mobile ">
-  <ul>
-    <li class="menu-item nav-item dropdown" *ngFor="let item of menu">
-      <a class="menu-link nav-link" href="javascript:void(0)">
-        {{item.name}}
-      </a>
-    </li>
-  </ul>
-</div> -->
+<div class="menu-mobile sticky-nav-wrapper" >
+  <div class="sticky-nav1 collapse" id="collapsibleNavbar1">
+    <ul class="menu1 nav-menu1">
+      <li class="menu-item nav-item dropdown" *ngFor="let item of menu">
+        <a class="menu-link nav-link" href="javascript:void(0)">
+          {{item.name}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

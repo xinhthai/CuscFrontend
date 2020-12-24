@@ -47,10 +47,11 @@ export class NewsDetailComponent implements OnInit {
     console.log(this.newsDTO.categoryId);
     console.log(this.selected);
   }
+  id:number;
   getDetail():void{
-    const id=+this.route.snapshot.params['id'];
-    console.log(id);
-    this.getDetailNewsService(id);
+    this.id=+this.route.snapshot.params['id'];
+    console.log(this.id);
+    this.getDetailNewsService(this.id);
   }
   getDetailNewsService(id){
     // var reader=new FileReader();
@@ -161,7 +162,17 @@ export class NewsDetailComponent implements OnInit {
     this.menuId = id;
   }
   updateNews(newsDTO: NewsDTO):any{
-
+    newsDTO.newsId=this.id;
+    console.log(newsDTO);
+    this.newsService.updateNews(newsDTO).subscribe(
+      data => {
+        this.snotifyService.success('Đã cập nhật tin tức thành công');
+      },
+      (err : HttpErrorResponse) => {
+        console.log(err);
+        this.snotifyService.error('Thêm loại tin thất bại!');
+      }
+    );
   }
   addNews(newsDTO:NewsDTO): any{
     newsDTO.menuId = this.menuId;

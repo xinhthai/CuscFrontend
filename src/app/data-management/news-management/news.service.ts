@@ -27,6 +27,18 @@ export class NewsService {
     formData.append('menuId',String(news.menuId));
     return this.http.post(`${URL}`,formData)
   }
+  updateNews(news: NewsDTO): Observable<any>{
+    const formData = new FormData();
+    formData.append('newsId',String(news.newsId));
+    formData.append('shortContent',news.shortContent);
+    formData.append('title',news.title);
+    formData.append('detail',news.detail);
+    formData.append('imagePath',news.imagePath);
+    formData.append('mainNews',String(news.mainNews));
+    formData.append('categoryId',String(news.categoryId));
+    formData.append('menuId',String(news.menuId));
+    return this.http.put(`${URL}`,formData)
+  }
   getAllNewsByTitle(): Observable<any>{
     return this.http.get("http://localhost:3000/api/news/view",httpOptions);
   }
@@ -48,4 +60,5 @@ export class NewsService {
       params: new HttpParams().set('categoryId',id)
     });
   }
+
 }

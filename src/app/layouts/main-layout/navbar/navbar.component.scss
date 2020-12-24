@@ -69,7 +69,7 @@ $main_color: #B03234;
 }
 //stick navbar
 :root {
-  --sticky-nav-height: 25px;
+  --sticky-nav-height: 60px;
 }
 .sticky-nav-wrapper{
   min-height: var(--sticky-nav-height);
@@ -78,19 +78,37 @@ $main_color: #B03234;
   height: var(--sticky-nav-height);
   width: 100%;
 }
-@media only screen and (max-width: 991px) and (min-width: 768px){
-  .menu-sm-button {
-    position: fixed;
-    margin-top: 44px;
-    margin-left: 20px;
-    top: 0px;
+.menu-mobile{
+  position: fixed;
+  z-index: 99;
+  top: 16%;
+  margin-left: 1%;
+  width: 22%;
+  background-color: $main_color;
+}
+.sticky-nav1{
+  .menu1{
+    list-style: none;
+    left: 0;
+    right: auto;
+    padding-left: 0;
+    li{
+      height: 45px;
+      a{
+        font-size: 14px;
+        color: white;
+        text-transform: uppercase;
+      }
+      :hover{
+        background:rgba(0,0,0,.1);
+        color: white;
+      }
+    }
   }
-  .navbar-toggler {
-    background: $main_color;
-    padding: .25rem .75rem;
-    font-size: 1.25rem;
-    line-height: 1;
-    border: 1px solid transparent;
-    border-radius: .25rem;
-  }
+}
+.menu-sm-button{
+  margin-top: 50px;
+  margin-left: 22px;
+  z-index: 99;
+
 }

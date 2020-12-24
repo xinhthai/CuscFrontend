@@ -1,9 +1,11 @@
-<div>
+<div class="container1 news-detail">
   <div class="title">
     {{newsDetail.title}}
   </div>
   <div class="subcription">
     {{newsDetail.shortContent}}
+  </div>
+  <div class="detail" [innerHTML]="newsDetail.detail">
   </div>
 </div>
 

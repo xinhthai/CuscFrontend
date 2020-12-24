@@ -10,7 +10,7 @@ $main-color: #B03234;
   }
   .news-body{
     margin-top: 20px;
-    .main-news{
+    .main-list-news{
       border-bottom: 1px solid $main-color;
       height: 280px;
       .main-image{
@@ -36,3 +36,4 @@ $main-color: #B03234;
 .my-pagination .ngx-pagination .current {
   background: red;
 }
+// responsive
