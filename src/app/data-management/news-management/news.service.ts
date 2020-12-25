@@ -15,7 +15,6 @@ export class NewsService {
     public http: HttpClient
   ) { }
   addNews(news: NewsDTO): Observable<any>{
-    console.log(news);
     const formData = new FormData();
     formData.append('newsId','');
     formData.append('shortContent',news.shortContent);
@@ -37,6 +36,7 @@ export class NewsService {
     formData.append('mainNews',String(news.mainNews));
     formData.append('categoryId',String(news.categoryId));
     formData.append('menuId',String(news.menuId));
+    formData.append('createdDate',String(news.createdDate));
     return this.http.put(`${URL}`,formData)
   }
   getAllNewsByTitle(): Observable<any>{

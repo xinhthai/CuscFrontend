@@ -122,7 +122,6 @@ export class NewsInputComponent implements OnInit {
     for(let i =0; i < this.listCategory.length; i++){
       if(selectedCategory === this.listCategory[i].categoryName){
         this.newsDTO.categoryId = this.listCategory[i].categoryId;
-        console.log(this.newsDTO.categoryId);
       }
     }
   }

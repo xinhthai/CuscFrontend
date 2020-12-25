@@ -22,9 +22,9 @@
         <h3>Chuyên mục tin</h3>
         <p class="alert alert-success">Chọn một chuyên mục cho bản tin.Nhấn vào đây nếu bạn muốn thêm chuyên mục tin.</p>
         <mat-form-field appearance="fill" style="width: 620px;">
-          <mat-label>Chuyên mục tin</mat-label>
-          <mat-select [(ngModel)]="selectedCategory" (selectionChange)="getCategory(selectedCategory)" [(ngModel)]="selected" name="category">
-            <mat-option *ngFor="let item of listCategory" [value]="item.categoryId">{{item.categoryName}}</mat-option>
+          <mat-label>{{selectedCategory.categoryName}}</mat-label>
+          <mat-select [(ngModel)]="selectedCategory.categoryName" name="categoryName" (selectionChange)="getCategory(selectedCategory.categoryName)">
+            <mat-option *ngFor="let item of listCategory" [(value)]="item.categoryName">{{item.categoryName}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -55,7 +55,7 @@
       <div class="input-item">
         <mat-form-field>
           <mat-label>Loại tin</mat-label>
-          <input matInput [(ngModel)] ="selectedMenu" name="selectedMenu">
+          <input matInput [(ngModel)]="selectedMenu.name" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
       </div>
       <div class="input-item">

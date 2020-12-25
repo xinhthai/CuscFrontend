@@ -20,14 +20,16 @@ export class NewsDetailComponent implements OnInit {
   newsDTO = new NewsDTO();
   url_image: any;
   directory_url= "../../../../assets/news_images/";
-  selectedCategory ='';
-  selectedMenu = '';
+  selectedMenu: any = {};
+  selectedCategory: any= {};
+  selectedImage: any;
   editorContent = '';
-  listCategory: any;
+  listCategory: any[] = [];
   listMenu: any;
-  menuId: any;
+  covertToFile: any;
+  menuId: any ;
   animals:string;
-  selected=21;
+  categoryName: any;
   checked=false;
   public Editor = Editor ;
   newsDetail: Observable<NewsDTO>
@@ -43,14 +45,10 @@ export class NewsDetailComponent implements OnInit {
     this.getDetail();
     this.getAllCategory();
     this.getAllMenu();
-    console.log(this.newsDTO);
-    console.log(this.newsDTO.categoryId);
-    console.log(this.selected);
-  }
+ }
   id:number;
   getDetail():void{
     this.id=+this.route.snapshot.params['id'];
-    console.log(this.id);
     this.getDetailNewsService(this.id);
   }
   getDetailNewsService(id){
@@ -63,11 +61,13 @@ export class NewsDetailComponent implements OnInit {
     this.newsService.getDetailNews(id).subscribe(
       data =>{
         this.newsDTO=data;
-        this.selected=data.category.categoryId;
-        this.selectedMenu=data.menu.name;
+        this.selectedCategory=data.category;
+        this.selectedMenu=data.menu;
         this.url_image=this.directory_url + data.imagePath;
+        this.selectedImage = new File(["Image-Not-Change"], data.imagePath, {
+          type: "image/"+data.imagePath.substr(data.imagePath.length - 3),
+        });
         this.editorContent = this.newsDTO.detail;
-        console.log(data);
       },
       error => console.log(error)
     )
@@ -120,7 +120,6 @@ export class NewsDetailComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe(
       data =>{
         this.listCategory=data;
-        console.log(this.listCategory)
       },
       error => console.log(error)
     );
@@ -130,7 +129,6 @@ export class NewsDetailComponent implements OnInit {
     this.menuService.getAllMenu().subscribe(
       data =>{
         this.listMenu=data;
-        console.log(this.listMenu)
       },
       error => console.log(error)
     );
@@ -143,28 +141,39 @@ export class NewsDetailComponent implements OnInit {
       reader.readAsDataURL(e.target.files[0]);
       reader.onload=(event:any)=>{
         this.url_image=event.target.result;
-        this.newsDTO.imagePath = e.target.files[0];
+        this.selectedImage = e.target.files[0];
       }
     }
   }
 
-  getCategory(selectedCategory){
+  getCategory(selectedCategoryName: string){
     for(let i =0; i < this.listCategory.length; i++){
-      if(selectedCategory === this.listCategory[i].categoryName){
-        this.newsDTO.categoryId = this.listCategory[i].categoryId;
-        console.log(this.newsDTO.categoryId);
+      if(selectedCategoryName === this.listCategory[i].categoryName){
+        this.selectedCategory.categoryId = this.listCategory[i].categoryId;
+        this.selectedCategory.categoryName = this.listCategory[i].categoryName;
       }
     }
   }
+
 
   getMenu(menuName: any,id: any){
-    this.selectedMenu = menuName;
-    this.menuId = id;
+    this.selectedMenu.name = menuName;
+    this.selectedMenu.menuId = id;
   }
+
   updateNews(newsDTO: NewsDTO):any{
-    newsDTO.newsId=this.id;
-    console.log(newsDTO);
-    this.newsService.updateNews(newsDTO).subscribe(
+    let newsUpdateDTO = new NewsDTO();
+    newsUpdateDTO.newsId = newsDTO.newsId;
+    newsUpdateDTO.shortContent = newsDTO.shortContent;
+    newsUpdateDTO.title = newsDTO.title;
+    newsUpdateDTO.detail = this.editorContent;
+    newsUpdateDTO.mainNews = newsDTO.mainNews;
+    newsUpdateDTO.status = newsDTO.status;
+    newsUpdateDTO.imagePath = this.selectedImage;
+    newsUpdateDTO.menuId = this.selectedMenu.menuId;
+    newsUpdateDTO.categoryId = this.selectedCategory.categoryId;
+    newsUpdateDTO.createdDate = newsDTO.createdDate;
+    this.newsService.updateNews(newsUpdateDTO).subscribe(
       data => {
         this.snotifyService.success('Đã cập nhật tin tức thành công');
       },
