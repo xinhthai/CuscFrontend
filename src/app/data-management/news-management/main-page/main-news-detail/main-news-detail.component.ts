@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NewsDTO } from '../../news.model';
 import { NewsService } from '../../news.service';
@@ -6,13 +6,16 @@ import { NewsService } from '../../news.service';
 @Component({
   selector: 'app-main-news-detail',
   templateUrl: './main-news-detail.component.html',
-  styleUrls: ['./main-news-detail.component.scss']
+  styleUrls: ['./main-news-detail.component.scss,../../../../../../../assets/ckeditor.scss']
 })
+
 export class MainNewsDetailComponent implements OnInit {
   newsDetail: NewsDTO= new NewsDTO();
+  content: any;
   constructor(
     private route: ActivatedRoute,
-    private newsService: NewsService
+    private newsService: NewsService,
+
   ) { }
 
   ngOnInit(): void {
@@ -32,3 +35,4 @@ export class MainNewsDetailComponent implements OnInit {
     error =>console.log(error);
   }
 }
+

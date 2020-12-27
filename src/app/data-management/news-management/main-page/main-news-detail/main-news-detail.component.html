@@ -5,7 +5,7 @@
   <div class="subcription">
     {{newsDetail.shortContent}}
   </div>
-  <div class="detail" [innerHTML]="newsDetail.detail">
-  </div>
+  <div [innerHTML]="newsDetail.detail | sanitizeHtml"></div>
+  <!-- <pre>{{!! newsDetail.detail !!}}</pre> -->
 </div>
 

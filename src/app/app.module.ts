@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './layouts/main-layout/footer/footer.component';
 import { HeaderComponent } from './layouts/main-layout/header/header.component';
 import { NavbarComponent } from './layouts/main-layout/navbar/navbar.component';
+import {sanitizeHtmlPipe} from './shared/safe-html.pipe';
+
 import {StickyNavModule} from 'ng2-sticky-nav';
 import { HttpClientModule} from '@angular/common/http';
 import {MainComponent} from './main/main.component'
@@ -77,7 +79,8 @@ const config={
     DialogChangeStatusComponent,
     MainListNewsComponent,
     MainNewsDetailComponent,
-    SizeDectectorComponent
+    SizeDectectorComponent,
+    sanitizeHtmlPipe
   ],
   imports: [
     BrowserModule,
