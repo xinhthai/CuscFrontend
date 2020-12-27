@@ -1,8 +1,7 @@
-import { Route } from '@angular/compiler/src/core';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, ObservedValueOf } from 'rxjs';
-import * as Editor from '../../../../assets/ckeditor5/build/ckeditor';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import * as ClassicEditor from '../../../../assets/ckeditor5/build/ckeditor';
 import { MenuService } from 'src/app/layouts/main-layout/menu.service';
 import { CategoryService } from '../news-category/category.service';
 import { NewsDTO } from '../news.model';
@@ -10,10 +9,11 @@ import { NewsService } from '../news.service';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { SnotifyService } from 'ng-snotify';
 import { HttpErrorResponse } from '@angular/common/http';
+
 @Component({
   selector: 'app-news-detail',
   templateUrl: './news-detail.component.html',
-  styleUrls: ['./news-detail.component.scss']
+  styleUrls: ['./news-detail.component.scss',]
 })
 export class NewsDetailComponent implements OnInit {
   active:boolean=false;
@@ -31,7 +31,7 @@ export class NewsDetailComponent implements OnInit {
   animals:string;
   categoryName: any;
   checked=false;
-  public Editor = Editor ;
+  public editor = ClassicEditor ;
   newsDetail: Observable<NewsDTO>
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   constructor(
@@ -40,39 +40,14 @@ export class NewsDetailComponent implements OnInit {
     private categoryService: CategoryService,
     private menuService: MenuService,
     private snotifyService: SnotifyService,
+
   ) { }
   ngOnInit(): void {
     this.getDetail();
     this.getAllCategory();
     this.getAllMenu();
  }
-  id:number;
-  getDetail():void{
-    this.id=+this.route.snapshot.params['id'];
-    this.getDetailNewsService(this.id);
-  }
-  getDetailNewsService(id){
-    // var reader=new FileReader();
-    // reader.readAsDataURL(target.files[0]);
-    // reader.onload=(event:any)=>{
-    //   this.url_image=event.target.result;
-    //   this.newsDTO.imagePath = e.target.files[0];
-    // }
-    this.newsService.getDetailNews(id).subscribe(
-      data =>{
-        this.newsDTO=data;
-        this.selectedCategory=data.category;
-        this.selectedMenu=data.menu;
-        this.url_image=this.directory_url + data.imagePath;
-        this.selectedImage = new File(["Image-Not-Change"], data.imagePath, {
-          type: "image/"+data.imagePath.substr(data.imagePath.length - 3),
-        });
-        this.editorContent = this.newsDTO.detail;
-      },
-      error => console.log(error)
-    )
-  }
-  editorConfig = {
+ editorConfig = {
     cloudServices: {
       tokenUrl: 'https://76928.cke-cs.com/token/dev/13a87a8fd6e484e195eae3543653d57318614c7a424dc6b570931d5ecd0e',
       uploadUrl:'https://76928.cke-cs.com/easyimage/upload/'
@@ -139,6 +114,33 @@ export class NewsDetailComponent implements OnInit {
     fullPage:true,
 
   }
+  id:number;
+  getDetail():void{
+    this.id=+this.route.snapshot.params['id'];
+    this.getDetailNewsService(this.id);
+  }
+  getDetailNewsService(id){
+    // var reader=new FileReader();
+    // reader.readAsDataURL(target.files[0]);
+    // reader.onload=(event:any)=>{
+    //   this.url_image=event.target.result;
+    //   this.newsDTO.imagePath = e.target.files[0];
+    // }
+    this.newsService.getDetailNews(id).subscribe(
+      data =>{
+        this.newsDTO=data;
+        this.selectedCategory=data.category;
+        this.selectedMenu=data.menu;
+        this.url_image=this.directory_url + data.imagePath;
+        this.selectedImage = new File(["Image-Not-Change"], data.imagePath, {
+          type: "image/"+data.imagePath.substr(data.imagePath.length - 3),
+        });
+        this.editorContent = this.newsDTO.detail;
+      },
+      error => console.log(error)
+    )
+  }
+
   getAllCategory(){
     this.categoryService.getAllCategory().subscribe(
       data =>{
@@ -174,6 +176,7 @@ export class NewsDetailComponent implements OnInit {
       if(selectedCategoryName === this.listCategory[i].categoryName){
         this.selectedCategory.categoryId = this.listCategory[i].categoryId;
         this.selectedCategory.categoryName = this.listCategory[i].categoryName;
+        console.log(this.selectedCategory)
       }
     }
   }

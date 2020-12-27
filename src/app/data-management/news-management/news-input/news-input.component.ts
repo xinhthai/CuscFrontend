@@ -2,7 +2,7 @@ import { Component,OnInit, ViewChild, } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../news-category/category.model';
 import { CategoryService } from '../news-category/category.service';
-import * as Editor from '../../../../assets/ckeditor5/build/ckeditor';
+import * as ClassicEditor from '../../../../assets/ckeditor5/build/ckeditor';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SnotifyService } from 'ng-snotify';
 import { Menu } from 'src/app/layouts/main-layout/menu.model';
@@ -29,7 +29,7 @@ export class NewsInputComponent implements OnInit {
   menuId: any;
   animals:string;
   checked=false;
-  public Editor = Editor ;
+  public Editor = ClassicEditor ;
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   constructor(
     private categoryService: CategoryService,
@@ -53,6 +53,7 @@ export class NewsInputComponent implements OnInit {
         '|',
         'bold',
         'italic',
+        'fontSize',
         'link',
         'bulletedList',
         'numberedList',
@@ -74,7 +75,8 @@ export class NewsInputComponent implements OnInit {
         'imageStyle:full',
         'imageStyle:alignright',
         '|',
-        'imageTextAlternative'
+        'imageTextAlternative',
+        'linkImage'
       ],
       styles:['alignLeft','full','alignRight']
     },
@@ -122,6 +124,8 @@ export class NewsInputComponent implements OnInit {
     for(let i =0; i < this.listCategory.length; i++){
       if(selectedCategory === this.listCategory[i].categoryName){
         this.newsDTO.categoryId = this.listCategory[i].categoryId;
+        console.log(this.selectedCategory)
+
       }
     }
   }
