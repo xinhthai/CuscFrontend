@@ -2,6 +2,9 @@ $main_color: #B03234;
 a{
   color: $main_color;
 }
+.container{
+  overflow: hidden;
+}
 svg{
   height: 40px;
   width: 40px;

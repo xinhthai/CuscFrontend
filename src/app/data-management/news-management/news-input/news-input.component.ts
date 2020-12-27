@@ -134,6 +134,7 @@ export class NewsInputComponent implements OnInit {
   addNews(newsDTO:NewsDTO): any{
     newsDTO.menuId = this.menuId;
     newsDTO.detail = this.editorContent;
+    console.log(newsDTO);
     this.newsService.addNews(newsDTO).subscribe(
     data =>{
       this.snotifyService.success('Thêm tin tức thành công!')

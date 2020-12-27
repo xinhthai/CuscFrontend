@@ -77,12 +77,14 @@ export class NewsDetailComponent implements OnInit {
       tokenUrl: 'https://76928.cke-cs.com/token/dev/13a87a8fd6e484e195eae3543653d57318614c7a424dc6b570931d5ecd0e',
       uploadUrl:'https://76928.cke-cs.com/easyimage/upload/'
     },
-    toolbar: {
-      items: [
+    toolbar:
+      [
         'heading',
         '|',
         'bold',
         'italic',
+        'fontSize',
+        'fontFamily',
         'link',
         'bulletedList',
         'numberedList',
@@ -94,19 +96,38 @@ export class NewsDetailComponent implements OnInit {
         'blockQuote',
         'insertTable',
         'mediaEmbed',
+        'htmlEmbed',
         'undo',
         'redo'
-      ]
-    },
+      ],
+
     image: {
       toolbar: [
-        'imageStyle:alignleft',
-        'imageStyle:full',
-        'imageStyle:alignright',
+        'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
         '|',
-        'imageTextAlternative'
+        'imageResize',
+        '|',
+        'imageTextAlternative',
+        'linkImage'
       ],
-      styles:['alignLeft','full','alignRight']
+      styles: ['alignLeft', 'alignCenter', 'alignRight'],
+      resizeOptions: [
+        {
+            name: 'imageResize:original',
+            label: 'Original',
+            value: null
+        },
+        {
+            name: 'imageResize:50',
+            label: '50%',
+            value: '50'
+        },
+        {
+            name: 'imageResize:75',
+            label: '75%',
+            value: '75'
+        }
+    ],
     },
     table: {
       contentToolbar: [
@@ -115,6 +136,8 @@ export class NewsDetailComponent implements OnInit {
         'mergeTableCells'
       ]
     },
+    fullPage:true,
+
   }
   getAllCategory(){
     this.categoryService.getAllCategory().subscribe(

@@ -13,6 +13,7 @@ import { RegisterComponent } from './data-management/account/register/register.c
 import { NewsUpdateComponent } from './data-management/news-management/news-update/news-update.component';
 import { MainListNewsComponent } from './data-management/news-management/main-page/main-list-news/main-list-news.component';
 import { MainNewsDetailComponent } from './data-management/news-management/main-page/main-news-detail/main-news-detail.component';
+import { ListNewByMenuComponent } from './layouts/main-layout/navbar/list-new-by-menu/list-new-by-menu.component';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
@@ -31,6 +32,10 @@ import { MainNewsDetailComponent } from './data-management/news-management/main-
           {
             path:'newsdetail/:id',
             component: MainNewsDetailComponent
+          },
+          {
+            path: 'educate/:id',
+            component: ListNewByMenuComponent
           }
         ]
       },

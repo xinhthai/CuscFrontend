@@ -40,6 +40,8 @@ import { MainListNewsComponent } from './data-management/news-management/main-pa
 import { MainNewsDetailComponent } from './data-management/news-management/main-page/main-news-detail/main-news-detail.component';
 import { SizeDectectorComponent } from './size-dectector/size-dectector.component';
 import {ResponsiveModule} from 'ngx-responsive';
+import { ListNewByMenuComponent } from './layouts/main-layout/navbar/list-new-by-menu/list-new-by-menu.component';
+import { sanitizeHtmlPipe } from './shared/safe-html.pipe';
 const config={
   breakPoints: {
     xs: {max: 575},
@@ -77,7 +79,9 @@ const config={
     DialogChangeStatusComponent,
     MainListNewsComponent,
     MainNewsDetailComponent,
-    SizeDectectorComponent
+    SizeDectectorComponent,
+    ListNewByMenuComponent,
+    sanitizeHtmlPipe
   ],
   imports: [
     BrowserModule,

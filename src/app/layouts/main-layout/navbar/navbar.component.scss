@@ -65,7 +65,10 @@ $main_color: #B03234;
 	background: rgba(0,0,0,.1);
 }
 .main-menu .menu-item:hover .sub-menu{
-	display: block;
+  display: block;
+}
+.menu-item{
+  cursor: pointer;
 }
 //stick navbar
 :root {
@@ -81,9 +84,9 @@ $main_color: #B03234;
 .menu-mobile{
   position: fixed;
   z-index: 99;
-  top: 16%;
+  top: 86px;
   margin-left: 1%;
-  width: 22%;
+  width: 200px;
   background-color: $main_color;
 }
 .sticky-nav1{

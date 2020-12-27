@@ -60,5 +60,10 @@ export class NewsService {
       params: new HttpParams().set('categoryId',id)
     });
   }
+  getListNewsByMenuId(id):Observable<any>{
+    return this.http.get('http://localhost:3000/api/news/type',{
+      params: new HttpParams().set('menuId',id)
+    });
+  }
 
 }
