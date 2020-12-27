@@ -1,22 +1,17 @@
 :root{
-  --style-spacing: 1.5em;
+  --image-style-spacing: 1.5em;
+
 }
+
+/* ckeditor5-image/theme/imageresize.css */
 .image.image_resized {
   max-width: 100%;
   display: block;
   box-sizing: border-box;
-  .image-style-align-center {
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 /* ckeditor5-image/theme/imageresize.css */
 .image.image_resized img {
   width: 100%;
-  .image-style-align-center {
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 /* ckeditor5-image/theme/imageresize.css */
 .image.image_resized > figcaption {
@@ -25,7 +20,7 @@
 /* ckeditor5-image/theme/imagestyle.css */
 .image-style-side {
   float: right;
-  margin-left: var(--style-spacing);
+  margin-left: var(--image-style-spacing);
   max-width: 50%;
 }
 /* ckeditor5-image/theme/imagestyle.css */
@@ -34,10 +29,14 @@
   margin-right: var(--image-style-spacing);
 }
 /* ckeditor5-image/theme/imagestyle.css */
+.image-style-align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
 /* ckeditor5-image/theme/imagestyle.css */
 .image-style-align-right {
   float: right;
-  margin-left: var(--style-spacing);
+  margin-left: var(--image-style-spacing);
 }
 /* ckeditor5-image/theme/image.css */
 .image {
@@ -63,4 +62,20 @@
   padding: .6em;
   font-size: .75em;
   outline-offset: -1px;
+}
+
+.text-tiny {
+  font-size: .7em;
+}
+/* ckeditor5-font/theme/fontsize.css */
+.text-small {
+  font-size: .85em;
+}
+/* ckeditor5-font/theme/fontsize.css */
+.text-big {
+  font-size: 1.4em;
+}
+/* ckeditor5-font/theme/fontsize.css */
+.text-huge {
+  font-size: 1.8em;
 }

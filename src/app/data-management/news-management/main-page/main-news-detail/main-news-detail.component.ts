@@ -6,7 +6,7 @@ import { NewsService } from '../../news.service';
 @Component({
   selector: 'app-main-news-detail',
   templateUrl: './main-news-detail.component.html',
-  styleUrls: ['./main-news-detail.component.scss,../../../../../../../assets/ckeditor.scss']
+  styleUrls: ['./main-news-detail.component.scss,../../../../../../../assets/ckeditor.css']
 })
 
 export class MainNewsDetailComponent implements OnInit {

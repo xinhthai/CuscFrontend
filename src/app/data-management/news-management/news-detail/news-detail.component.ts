@@ -176,6 +176,7 @@ export class NewsDetailComponent implements OnInit {
       if(selectedCategoryName === this.listCategory[i].categoryName){
         this.selectedCategory.categoryId = this.listCategory[i].categoryId;
         this.selectedCategory.categoryName = this.listCategory[i].categoryName;
+        console.log(this.selectedCategory)
       }
     }
   }
