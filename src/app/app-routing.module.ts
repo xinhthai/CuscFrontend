@@ -14,6 +14,7 @@ import { NewsUpdateComponent } from './data-management/news-management/news-upda
 import { MainListNewsComponent } from './data-management/news-management/main-page/main-list-news/main-list-news.component';
 import { MainNewsDetailComponent } from './data-management/news-management/main-page/main-news-detail/main-news-detail.component';
 import { ListNewByMenuComponent } from './layouts/main-layout/navbar/list-new-by-menu/list-new-by-menu.component';
+import { MenuComponent } from './data-management/admin/menu/menu.component';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
@@ -79,6 +80,10 @@ import { ListNewByMenuComponent } from './layouts/main-layout/navbar/list-new-by
               {
                 path: 'category-news',
                 component: NewsCategoryComponent
+              },
+              {
+                path: 'menu-config',
+                component: MenuComponent
               },
               {
                 path: 'account',

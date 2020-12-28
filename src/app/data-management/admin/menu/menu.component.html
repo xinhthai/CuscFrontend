@@ -1,0 +1,72 @@
+<div class="container1">
+  <div class="insert-menu">
+    <h3>Thêm menu</h3>
+    <div>
+      <div style="margin-top: 30px;">
+        <div class="alert alert-success" role="alert">
+          <h3 class="alert-heading">Lưu ý:</h3>
+          <span>
+            Khi click chọn vào checkbox menu gốc, menu khi thêm vào sẽ <br>
+            được hiển thị trực tiếp trên thanh menu thay vì hiển thị như các menu con
+          </span>
+        </div>
+      </div>
+      <div class="insert-name" style="margin-top: 30px;">
+        <div class="input-box">
+          <button mat-raised-button [matMenuTriggerFor]="menu" [disabled]="checked===true">Loại tin</button>
+          <mat-checkbox style="margin-left: 50px;" color="primary" [(ngModel)]="checked">Menu gốc</mat-checkbox>
+        </div>
+        <div>
+          Tên menu:
+          <input matInput/>
+          <button style="margin-left: 40px;" mat-raised-button>Thêm menu</button>
+        </div>
+      </div>
+
+      <mat-menu type="button" #menu="matMenu">
+        <span *ngFor="let item of listMenu">
+          <span *ngIf="item.submenu && item.submenu.length>0">
+            <button mat-menu-item [matMenuTriggerFor]="childmenu" style="margin-left: 30px;">
+              {{item.name}}
+            </button>
+            <mat-menu #childmenu="matMenu" style="margin-left: 30px;">
+              <span *ngFor="let child of item.submenu">
+                <button mat-menu-item>{{child.name}}</button>
+              </span>
+            </mat-menu>
+          </span>
+          <span *ngIf="!item.submenu || item.submenu.length===0">
+            <button mat-menu-item>
+              {{item.name}}
+            </button>
+          </span>
+        </span>
+      </mat-menu>
+    </div>
+  </div>
+  <span class="allert allert-succes"> Thanh menu sẽ có dạng thế này sau khi</span>
+  <div>
+    <ul class="main-menu navbar-nav" >
+      <li class="menu-item nav-item dropdown" *ngFor="let item of listMenu">
+        <span *ngIf="item.menuId===1">
+          <a class="menu-link nav-link" href="javascript:void(0)">
+            {{item.name}}
+          </a>
+        </span>
+        <span *ngIf="item.menuId!=1">
+          <a class="menu-link nav-link">
+            {{item.name}}
+          </a>
+        </span>
+        <ul class="sub-menu">
+          <li class="sub-menu-item"  *ngFor="let i of item.submenu">
+            <a class="dropdown-item" href="javascript:void(0)">
+              {{i.name}}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+</div>
