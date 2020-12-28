@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
-import { first } from 'rxjs/operators';
 import { Account } from '../account.model';
 import { AuthService } from '../service/auth.service';
 import { TokenService } from '../service/token.service';
@@ -18,7 +17,12 @@ export class LoginComponent implements OnInit {
   isLoggedIn =false;
   roles: string[] = [];
   errorMessage='';
-  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router, private snotifyService: SnotifyService) { }
+  constructor(
+    private authService: AuthService,
+    private tokenService: TokenService,
+    private router: Router,
+    private snotifyService: SnotifyService
+  ) { }
   ngOnInit(): void {
 
     if(this.tokenService.getToken()){
@@ -26,6 +30,12 @@ export class LoginComponent implements OnInit {
       this.roles=this.tokenService.getAccount().roles;
     }
     }
+    // local storage
+  //   data: string[];
+  // saveInlocal(key, val): void{
+  //   this.storage.set(key,val);
+  //   this.data[key]=this.storage.get[key];
+  // }
   onSubmit(loginForm): void{
     this.submited=true;
     console.log(this.account.username);

@@ -1,0 +1,60 @@
+.main-menu{
+  display: flex;
+  height: 40px;
+  flex-direction: row;
+  background: lightgray;
+  .menu-item{
+    width: 165px;
+    border-right: 1px solid gray;
+    text-align: center;
+    cursor: pointer;
+    a{
+      color: black;
+      font-size: 13px;
+    }
+    :hover .sub-menu{
+      display: block;
+    }
+    .sub-menu{
+      display: none;
+      list-style: none;
+      padding-left: 0;
+      width: 200px;
+      z-index: 999;
+      .sub-menu-item{
+        a{
+          font-size: 13px;
+          line-height: 40px;
+          text-transform: capitalize;
+          color: black;
+          font-size: 14px;
+          :hover{
+            background: rgba(0,0,0,.1);
+          }
+        }
+      }
+    }
+
+  }
+}
+.main-menu .menu-item:hover .sub-menu{
+  display: block;
+}
+// .menu-item{
+//   cursor: pointer;
+// }
+.insert-menu{
+  width: 500px;
+  margin-left: 60px;
+  margin-top: 0;
+  padding-top: 20px;
+  .insert-name{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .input-box{
+      margin-left: 100px;
+      margin-bottom: 38px;
+    }
+  }
+}

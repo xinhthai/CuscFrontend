@@ -42,6 +42,8 @@ import { SizeDectectorComponent } from './size-dectector/size-dectector.componen
 import {ResponsiveModule} from 'ngx-responsive';
 import { ListNewByMenuComponent } from './layouts/main-layout/navbar/list-new-by-menu/list-new-by-menu.component';
 import { sanitizeHtmlPipe } from './shared/safe-html.pipe';
+import {MenuComponent} from './data-management/admin/menu/menu.component';
+import {AngularWebStorageModule} from 'angular-web-storage';
 const config={
   breakPoints: {
     xs: {max: 575},
@@ -81,7 +83,8 @@ const config={
     MainNewsDetailComponent,
     SizeDectectorComponent,
     ListNewByMenuComponent,
-    sanitizeHtmlPipe
+    sanitizeHtmlPipe,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -98,6 +101,7 @@ const config={
     DemoMaterialModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    AngularWebStorageModule,
     ResponsiveModule.forRoot(config)
   ],
   providers: [{provide:'SnotifyToastConfig', useValue: ToastDefaults },SnotifyService],

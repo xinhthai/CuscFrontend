@@ -12,6 +12,7 @@ import { EventEmitter } from '@angular/core';
 import { DialogAddComponent } from './dialog-add/dialog-add.component';
 import { DialogUpdateComponent } from './dialog-update/dialog-update.component';
 import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
+import { LocalStorageService} from 'angular-web-storage';
 @Component({
   selector: 'app-news-category',
   templateUrl: './news-category.component.html',
@@ -31,17 +32,18 @@ export class NewsCategoryComponent implements OnInit , OnDestroy{
       private routes : Router,
       private snotifyService: SnotifyService,
       private dialog: MatDialog,
-      private changeDetectorRefs: ChangeDetectorRef
-    ) { this.allListCategory(); }
+      private changeDetectorRefs: ChangeDetectorRef,
+      private local: LocalStorageService
+    ) {}
 
 
   ngOnInit(): void {
     this.allListCategory();
+    console.log(this.local.get('a'));
   }
   ngOnDestroy():void{
 
   }
-
   addAction(){
     this.nameAction='Thêm loại tin';
     this.action=1;
@@ -56,7 +58,10 @@ export class NewsCategoryComponent implements OnInit , OnDestroy{
         this.dataSource=data;
         this.dataSource =new MatTableDataSource(data);
         this.dataSource.paginator=this.paginator;
-        console.log(this.dataSource.paginator);
+        // this.local.set('dataSource',this.dataSource);
+        this.local.set('resource',JSON.stringify(this.dataSource));
+        // console.log(this.local.get('dataSource'));
+        console.log(JSON.parse(JSON.stringify(this.local.get('resource'))));
       },
       error => console.log(error)
     );
