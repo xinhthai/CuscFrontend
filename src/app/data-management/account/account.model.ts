@@ -1,5 +1,6 @@
 export class Account{
-  username : string;
-  password : string;
-
+    public username: string;
+    public password: string;
+    public activated: boolean;
+    public authorities: string[];
 }

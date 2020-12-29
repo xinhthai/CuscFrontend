@@ -8,7 +8,7 @@ import { FooterComponent } from './layouts/main-layout/footer/footer.component';
 import { HeaderComponent } from './layouts/main-layout/header/header.component';
 import { NavbarComponent } from './layouts/main-layout/navbar/navbar.component';
 import {StickyNavModule} from 'ng2-sticky-nav';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {MainComponent} from './main/main.component'
 import { HomeComponent } from './home/home.component';
 import { CommonModule} from '@angular/common';
@@ -23,7 +23,7 @@ import {  NewsInputComponent } from './data-management/news-management/news-inpu
 import { NewsDetailComponent } from './data-management/news-management/news-detail/news-detail.component';
 import { MainPageComponent } from './data-management/news-management/main-page/main-page.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import {MatSliderModule} from '@angular/material/slider';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule} from '@angular/material/select';
 import { DemoMaterialModule } from './main/material.module';
 import { NgxPaginationModule} from 'ngx-pagination';
@@ -44,6 +44,9 @@ import { ListNewByMenuComponent } from './layouts/main-layout/navbar/list-new-by
 import { sanitizeHtmlPipe } from './shared/safe-html.pipe';
 import {MenuComponent} from './data-management/admin/menu/menu.component';
 import {AngularWebStorageModule} from 'angular-web-storage';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { AuthInterceptor } from './blocks/auth.interceptor';
+import { AuthExpiredInterceptor } from './blocks/auth-expired.interceptor';
 const config={
   breakPoints: {
     xs: {max: 575},
@@ -102,9 +105,22 @@ const config={
     NgxPaginationModule,
     ReactiveFormsModule,
     AngularWebStorageModule,
-    ResponsiveModule.forRoot(config)
+    ResponsiveModule.forRoot(config),
+    NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-' }),
+
   ],
-  providers: [{provide:'SnotifyToastConfig', useValue: ToastDefaults },SnotifyService],
+  providers: [{provide:'SnotifyToastConfig', useValue: ToastDefaults },SnotifyService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthExpiredInterceptor,
+    multi: true
+  },
+  ],
   bootstrap: [MainComponent]
 })
 export class AppModule { }
