@@ -39,6 +39,7 @@ export class NewsTableComponent implements OnInit{
     this.newsService.getAllNewsByTitle().subscribe(
       data =>{
         this.dataSource=data;
+        console.log(this.dataSource);
         this.dataSource=new MatTableDataSource(data);
         this.dataSource.paginator=this.paginator;
         this.dataSource.sort=this.sort;

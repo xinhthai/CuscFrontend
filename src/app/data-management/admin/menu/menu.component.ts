@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Menu } from 'src/app/layouts/main-layout/menu.model';
 import { MenuService } from 'src/app/layouts/main-layout/menu.service';
-
+import { MenuDialogComponent } from './menu-dialog/menu-dialog.component';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -11,8 +12,12 @@ import { MenuService } from 'src/app/layouts/main-layout/menu.service';
 export class MenuComponent implements OnInit {
   listMenu: Observable<Menu>;
   checked: boolean=true;
+  menu: Menu=new Menu();
+  name: string;
+  selectedMenu:any ={};
   constructor(
-    private menuService: MenuService
+    private menuService: MenuService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -25,5 +30,38 @@ export class MenuComponent implements OnInit {
       },
       error =>console.log(error)
     );
+  }
+  getSelectedMenu(menuId, name){
+    this.selectedMenu.menuId=menuId;
+    this.selectedMenu.name=name;
+  }
+  showDialogChoose(id){
+    this.dialog.open(MenuDialogComponent,{
+      data: {id: id}
+    });
+  }
+  insertMenu(){
+    if(this.checked===true){
+      this.menu.parentId=0;
+      this.menu.name=this.name;
+      console.log(this.menu);
+      this.menuService.addMenu(this.menu).subscribe(
+        data =>{
+          console.log('Thêm menu thành công!');
+        },
+        error => console.log(error)
+      );
+    }
+    else{
+      this.menu.parentId=this.selectedMenu.menuId;
+      this.menu.name=this.name;
+      console.log(this.menu);
+      this.menuService.addMenu(this.menu).subscribe(
+        data =>{
+          console.log('Thêm menu thành công!');
+        },
+        error => console.log(error)
+      );
+    }
   }
 }

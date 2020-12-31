@@ -7,7 +7,7 @@
       <ul class="main-menu navbar-nav" >
         <li class="menu-item nav-item dropdown" *ngFor="let item of menu">
           <span *ngIf="item.menuId===1">
-            <a class="menu-link nav-link" href="javascript:void(0)">
+            <a class="menu-link nav-link" href="javascript:void(0)" [routerLink]="['/home']">
               {{item.name}}
             </a>
           </span>

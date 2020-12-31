@@ -12,31 +12,34 @@
         </div>
       </div>
       <div class="insert-name" style="margin-top: 30px;">
-        <div class="input-box">
-          <button mat-raised-button [matMenuTriggerFor]="menu" [disabled]="checked===true">Loại tin</button>
-          <mat-checkbox style="margin-left: 50px;" color="primary" [(ngModel)]="checked">Menu gốc</mat-checkbox>
-        </div>
-        <div>
-          Tên menu:
-          <input matInput/>
-          <button style="margin-left: 40px;" mat-raised-button>Thêm menu</button>
-        </div>
+
+          <div class="input-box">
+            <button mat-raised-button [matMenuTriggerFor]="menu"  [disabled]="checked===true">Loại tin</button>
+            <mat-checkbox style="margin-left: 50px;" color="primary" [(ngModel)]="checked">Menu gốc</mat-checkbox>
+          </div>
+          <mat-label>Menu cha</mat-label>
+          <input matInput [(ngModel)]="selectedMenu.name">
+          <mat-label>Tên menu</mat-label>
+          <input type="text" class="form-control" [(ngModel)]="name" id="name" name="name"/>
+          <!-- </mat-form-field> -->
+          <button (click)="insertMenu()" style="width: 115px;" mat-raised-button>Thêm menu</button>
+        <!-- </form> -->
       </div>
 
       <mat-menu type="button" #menu="matMenu">
         <span *ngFor="let item of listMenu">
           <span *ngIf="item.submenu && item.submenu.length>0">
-            <button mat-menu-item [matMenuTriggerFor]="childmenu" style="margin-left: 30px;">
+            <button mat-menu-item [matMenuTriggerFor]="childmenu" (click)="getSelectedMenu(item.menuId, item.name)" style="">
               {{item.name}}
             </button>
-            <mat-menu #childmenu="matMenu" style="margin-left: 30px;">
+            <mat-menu #childmenu="matMenu" style="">
               <span *ngFor="let child of item.submenu">
-                <button mat-menu-item>{{child.name}}</button>
+                <button mat-menu-item (click)="getSelectedMenu(child.menuId, child.name)">{{child.name}}</button>
               </span>
             </mat-menu>
           </span>
           <span *ngIf="!item.submenu || item.submenu.length===0">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="getSelectedMenu(item.menuId, item.name)">
               {{item.name}}
             </button>
           </span>
@@ -49,18 +52,18 @@
     <ul class="main-menu navbar-nav" >
       <li class="menu-item nav-item dropdown" *ngFor="let item of listMenu">
         <span *ngIf="item.menuId===1">
-          <a class="menu-link nav-link" href="javascript:void(0)">
+          <a class="menu-link nav-link" (click)="showDialogChoose(item.menuId)" href="javascript:void(0)">
             {{item.name}}
           </a>
         </span>
         <span *ngIf="item.menuId!=1">
-          <a class="menu-link nav-link">
+          <a class="menu-link nav-link" (click)="showDialogChoose(item.menuId)">
             {{item.name}}
           </a>
         </span>
         <ul class="sub-menu">
           <li class="sub-menu-item"  *ngFor="let i of item.submenu">
-            <a class="dropdown-item" href="javascript:void(0)">
+            <a class="dropdown-item" href="javascript:void(0)" (click)="showDialogChoose(item.menuId)">
               {{i.name}}
             </a>
           </li>

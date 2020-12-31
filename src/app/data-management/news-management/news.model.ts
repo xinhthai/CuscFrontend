@@ -21,4 +21,5 @@ export class NewsViewDTO{
   categoryName: string;
   status: boolean;
   mainNews: boolean;
+  createdDate: Date;
 }

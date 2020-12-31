@@ -36,11 +36,16 @@ export class NavbarComponent implements OnInit {
     this.active=true;
     this.id1==id;
     const myurl=`${this.url}/${id}`;
-    this.router.navigateByUrl(myurl).then(
-      e =>{
-        console.log('Chuyển route thành công!');
-      },
-      error =>console.log(error)
-    );
+    if(id===1){
+      this.router.navigateByUrl('/home');
+    }
+    else{
+      this.router.navigateByUrl(myurl).then(
+        e =>{
+          console.log('Chuyển route thành công!');
+        },
+        error =>console.log(error)
+      );
+    }
   }
 }

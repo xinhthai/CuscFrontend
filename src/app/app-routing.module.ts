@@ -98,15 +98,15 @@ import { MenuComponent } from './data-management/admin/menu/menu.component';
             ]
           }
         ]
+      },
+      {
+        path: '404',
+        component: ErrorComponent
+      },
+      {
+        path: '**',
+        redirectTo: '/404'
       }
-      // {
-      //   path: '404',
-      //   component: ErrorComponent
-      // },
-      // {
-      //   path: '**',
-      //   redirectTo: '/404'
-      // }
 
     ]
   )],

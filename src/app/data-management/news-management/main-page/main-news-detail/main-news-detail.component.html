@@ -1,8 +1,8 @@
-<div>
-  <div class="title">
+<div class="container1" style="margin-top: 50px;">
+  <div class="title" style="font-size: 30px; margin-bottom: 10px;">
     {{newsDetail.title}}
   </div>
-  <div class="subcription">
+  <div class="subcription" style="font-style: italic; margin-bottom: 10px;">
     {{newsDetail.shortContent}}
   </div>
   <div [innerHTML]="newsDetail.detail | sanitizeHtml"></div>

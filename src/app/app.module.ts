@@ -47,6 +47,7 @@ import {AngularWebStorageModule} from 'angular-web-storage';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AuthInterceptor } from './blocks/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/auth-expired.interceptor';
+import { MenuDialogComponent } from './data-management/admin/menu/menu-dialog/menu-dialog.component';
 const config={
   breakPoints: {
     xs: {max: 575},
@@ -87,7 +88,8 @@ const config={
     SizeDectectorComponent,
     ListNewByMenuComponent,
     sanitizeHtmlPipe,
-    MenuComponent
+    MenuComponent,
+    MenuDialogComponent
   ],
   imports: [
     BrowserModule,

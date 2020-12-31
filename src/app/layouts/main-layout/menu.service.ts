@@ -13,4 +13,10 @@ export class MenuService {
   getAllMenu() : Observable<any>{
     return this.http.get(`${URL}`);
   }
+  getOneMenuByMenuId(id): Observable<any>{
+    return this.http.get(`${URL}/${id}`);
+  }
+  addMenu(menu): Observable<any>{
+    return this.http.post(`${URL}`,menu);
+  }
 }
