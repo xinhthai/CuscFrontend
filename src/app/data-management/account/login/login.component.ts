@@ -2,7 +2,6 @@ import { Component, Input, OnInit,ElementRef, Renderer2, AfterViewInit } from '@
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
-import { Account } from '../account.model';
 import { StateStorageService } from '../service/state-storage.service';
 // import { TokenService } from '../service/token.service';
 import { LoginService } from './login.service';
@@ -12,7 +11,7 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements AfterViewInit {
-  @Input() account : Account= new Account;
+  // @Input() account : Account= new Account;
   authenticationError: boolean;
   loginForm = this.fb.group({
     username: [''],
@@ -20,7 +19,6 @@ export class LoginComponent implements AfterViewInit {
     rememberMe: [true]
   });
   constructor(
-    // private tokenService: TokenService,
     private stateStorageService: StateStorageService,
     private router: Router,
     private snotifyService: SnotifyService,
@@ -35,35 +33,6 @@ export class LoginComponent implements AfterViewInit {
 
   }
 
-  // onSubmit(loginForm): void{
-  //   this.submited=true;
-  //   console.log(this.account.username);
-  //   console.log(loginForm.value);
-  //   if(loginForm.invalid){
-  //     return;
-  //   }
-  //   this.loading=true;
-  //   this.authService.login(loginForm.value)
-  //     .subscribe(
-  //       data => {
-  //         this.tokenService.saveToken(data.accessToken);
-  //         this.tokenService.saveAccount(data);
-  //         this.isLoginFailed = false;
-  //         this.isLoginFailed= false;
-  //         this.isLoggedIn = true;
-  //         this.roles=this.tokenService.getAccount().roles;
-  //         // this.reloadPage();
-  //         this.router.navigate(['/admin']);
-  //         this.snotifyService.success('Đăng nhập thành công!');
-  //       },
-  //       err =>{
-  //         this.errorMessage=err.error.message;
-  //         this.isLoginFailed=true;
-
-  //       }
-  //     );
-  // }
-
   login() {
     this.loginService
       .login({
@@ -76,10 +45,9 @@ export class LoginComponent implements AfterViewInit {
         if (this.router.url === '/register' || /^\/activate\//.test(this.router.url) || /^\/reset\//.test(this.router.url)) {
           this.router.navigate(['']);
         }
-        const redirect = this.stateStorageService.getUrl();
-        if (redirect) {
+        else {
           this.stateStorageService.storeUrl(null);
-          this.router.navigateByUrl(redirect);
+          this.router.navigate(['/home']);
         }
       })
       .catch(() => {
