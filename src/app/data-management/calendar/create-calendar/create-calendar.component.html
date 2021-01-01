@@ -1,0 +1,34 @@
+<div class="container1">
+  <div class="post-news-button">Thêm lịch tuyển sinh</div>
+  <div>
+    <form #addCalendarForm="ngForm" method="POST">
+      <div class="col-xl-8" style="margin-left: 140px; margin-top: 50px;">
+        <div class="input-item">
+          <h3>Tên lịch tuyển sinh:</h3>
+          <mat-form-field>
+            <mat-label>Tên</mat-label>
+            <input matInput [(ngModel)]="Calendar.name"  name="name"/>
+          </mat-form-field>
+        </div>
+        <div class="input-item">
+          <h3>Tên lịch tuyển sinh:</h3>
+          <mat-form-field>
+            <mat-checkbox color="primary" [(ngModel)]="checked" name="check">Tin chính</mat-checkbox>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary">Save</button>
+        <!-- <div class="input-item">
+          <h3>Ngày thi</h3> -->
+          <!-- <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Choose a date</mat-label> -->
+            <!-- <input matInput name="date"/> -->
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker> -->
+          <!-- </mat-form-field> -->
+        <!-- </div> -->
+      </div>
+    </form>
+  </div>
+</div>
