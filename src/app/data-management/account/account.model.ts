@@ -1,6 +1,9 @@
 export class Account{
-    public username: string;
-    public password: string;
-    public activated: boolean;
-    public authorities: string[];
+    constructor(
+        public userId: string,
+        public username: string,
+        public fullName: string,
+        public status: boolean,
+        public authorities: string[],
+    ){}
 }
