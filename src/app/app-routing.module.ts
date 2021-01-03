@@ -16,6 +16,7 @@ import { MainNewsDetailComponent } from './data-management/news-management/main-
 import { ListNewByMenuComponent } from './layouts/main-layout/navbar/list-new-by-menu/list-new-by-menu.component';
 import { MenuComponent } from './data-management/admin/menu/menu.component';
 import { CreateCalendarComponent } from './data-management/calendar/create-calendar/create-calendar.component';
+import { ListCalendarComponent } from './data-management/calendar/list-calendar/list-calendar.component';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
@@ -99,6 +100,10 @@ import { CreateCalendarComponent } from './data-management/calendar/create-calen
               {
                 path: 'add-calendar',
                 component: CreateCalendarComponent
+              },
+              {
+                path: 'list-calendar',
+                component: ListCalendarComponent
               },
             ]
           }

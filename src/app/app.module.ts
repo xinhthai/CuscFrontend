@@ -48,6 +48,7 @@ import { AuthInterceptor } from './blocks/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/auth-expired.interceptor';
 import { MenuDialogComponent } from './data-management/admin/menu/menu-dialog/menu-dialog.component';
 import {CreateCalendarComponent} from './data-management/calendar/create-calendar/create-calendar.component';
+import { ListCalendarComponent } from './data-management/calendar/list-calendar/list-calendar.component';
 const config={
   breakPoints: {
     xs: {max: 575},
@@ -92,6 +93,7 @@ const config={
     MenuComponent,
     MenuDialogComponent,
     CreateCalendarComponent,
+    ListCalendarComponent,
   ],
   imports: [
     BrowserModule,
