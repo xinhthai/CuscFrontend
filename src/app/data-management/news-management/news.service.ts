@@ -24,6 +24,7 @@ export class NewsService {
     formData.append('mainNews',String(news.mainNews));
     formData.append('categoryId',String(news.categoryId));
     formData.append('menuId',String(news.menuId));
+    formData.append('username',news.username);
     return this.http.post(`${URL}`,formData)
   }
   updateNews(news: NewsDTO): Observable<any>{
