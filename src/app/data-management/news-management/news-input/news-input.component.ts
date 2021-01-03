@@ -29,7 +29,7 @@ export class NewsInputComponent implements OnInit {
   menuId: any;
   animals:string;
   checked=false;
-  public Editor = ClassicEditor ;
+  public Editor = ClassicEditor;
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   constructor(
     private categoryService: CategoryService,

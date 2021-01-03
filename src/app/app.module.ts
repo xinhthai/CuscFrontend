@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 import {SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './layouts/main-layout/footer/footer.component';
@@ -48,6 +47,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AuthInterceptor } from './blocks/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/auth-expired.interceptor';
 import { MenuDialogComponent } from './data-management/admin/menu/menu-dialog/menu-dialog.component';
+import {CreateCalendarComponent} from './data-management/calendar/create-calendar/create-calendar.component';
 const config={
   breakPoints: {
     xs: {max: 575},
@@ -89,7 +89,8 @@ const config={
     ListNewByMenuComponent,
     sanitizeHtmlPipe,
     MenuComponent,
-    MenuDialogComponent
+    MenuDialogComponent,
+    CreateCalendarComponent
   ],
   imports: [
     BrowserModule,
