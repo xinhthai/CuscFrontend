@@ -4,30 +4,94 @@
     <form #addCalendarForm="ngForm" method="POST">
       <div class="col-xl-8" style="margin-left: 140px; margin-top: 50px;">
         <div class="input-item">
-          <h3>Tên lịch tuyển sinh:</h3>
+          <h6>Tên lịch tuyển sinh:</h6>
           <mat-form-field>
             <mat-label>Tên</mat-label>
             <input matInput [(ngModel)]="Calendar.name"  name="name"/>
           </mat-form-field>
         </div>
         <div class="input-item">
-          <h3>Tên lịch tuyển sinh:</h3>
-          <mat-form-field>
-            <mat-checkbox color="primary" [(ngModel)]="checked" name="check">Tin chính</mat-checkbox>
-          </mat-form-field>
+          <h6 style="display: inline-block;">Có kiểm tra đầu vào không?</h6>
+          <div style="display: block; float: right; margin-right: 150px; margin-top: 20px;">
+            <mat-checkbox color="primary" [(ngModel)]="checked" name="check">Thi đầu vào</mat-checkbox>
+          </div>
+
         </div>
-        <button mat-raised-button color="primary">Save</button>
-        <!-- <div class="input-item">
-          <h3>Ngày thi</h3> -->
-          <!-- <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Choose a date</mat-label> -->
-            <!-- <input matInput name="date"/> -->
-            <!-- <mat-datepicker-toggle matSuffix [for]="picker">
+        <div class="input-item">
+          <h6>Ngày thi</h6>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput name="date" [matDatepicker]="picker"/>
+            <mat-datepicker-toggle matSuffix [for]="picker">
               <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
             </mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker> -->
-          <!-- </mat-form-field> -->
-        <!-- </div> -->
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="input-item">
+          <h6>Ngày khai giảng</h6>
+          <!-- <p class="alert alert-success"></p> -->
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput name="dayOpen" [matDatepicker]="dayOpen"/>
+            <mat-datepicker-toggle matSuffix [for]="dayOpen">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #dayOpen></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="input-item">
+          <h6>Ngày bắt đầu đăng ký</h6>
+          <!-- <p class="alert alert-success"></p> -->
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput name="startRegis" [matDatepicker]="startRegis"/>
+            <mat-datepicker-toggle matSuffix [for]="startRegis">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #startRegis></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="input-item">
+          <h6>Ngày kết thúc đăng ký</h6>
+          <!-- <p class="alert alert-success"></p> -->
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput name="endRegis" [matDatepicker]="endRegis"/>
+            <mat-datepicker-toggle matSuffix [for]="endRegis">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #endRegis></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="input-item">
+          <h6>Ngày ghi danh</h6>
+          <!-- <p class="alert alert-success"></p> -->
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput name="date" [matDatepicker]="endRegis"/>
+            <mat-datepicker-toggle matSuffix [for]="endRegis">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #endRegis></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="input-item">
+          <h6>Thời gian học:</h6>
+          <mat-form-field>
+            <!-- <mat-label>Thời gian học</mat-label> -->
+            <input matInput [(ngModel)]="Calendar.name"  name="timeLearn"/>
+          </mat-form-field>
+        </div>
+        <div class="input-item">
+          <h6>Thông tin khác:</h6>
+          <mat-form-field>
+            <!-- <mat-label>Thông tin khác</mat-label> -->
+            <textarea matInput></textarea>
+          </mat-form-field>
+        </div>
+        <button id="button-add-calendar" mat-raised-button color="primary">Thêm</button>
       </div>
     </form>
   </div>

@@ -22,7 +22,7 @@ export class AuthServerProvider {
       password: credentials.password,
       rememberMe: credentials.rememberMe
     };
-    
+
     return this.http.post(SERVER_API_URL + '/auth', data, { observe: 'response' }).pipe(map(authenticateSuccess.bind(this)));
 
     function authenticateSuccess(resp) {
@@ -36,7 +36,7 @@ export class AuthServerProvider {
       }
     }
   }
-  
+
   loginWithToken(jwt,rememberMe,currentUser) {
     if (jwt) {
       this.storeAuthenticationToken(jwt,rememberMe,currentUser);

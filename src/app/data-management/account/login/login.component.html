@@ -1,14 +1,16 @@
 <div id="login">
-  <h3 class="text-center text-white pt-5">Login form</h3>
-  <div class="container">
+  <div class="container1">
+    <h3 class="text-center text-white pt-5">Chào mừng bạn đến với trang đăng nhập dành cho người quản
+      trị hệ thống của trung tâm Công nghệ Phần mềm <br> trường Đại học Cần Thơ
+    </h3>
       <div id="login-row" class="row justify-content-center align-items-center">
           <div id="login-column" class="col-md-6">
               <div id="login-box" class="col-md-12">
                   <form class="form" role="form" (ngSubmit)="login()" [formGroup]="loginForm">
-                      <h3 class="text-center text-info">Login</h3>
+                      <!-- <h3 class="text-center text-info">Login</h3> -->
                       <div class="form-group">
                           <label for="username" class="text-info">Username:</label><br>
-                          <input type="text" class="form-control" name="username" id="username" formControlName="username" required />
+                          <input matInput type="text" class="form-control" name="username" id="username" formControlName="username" required />
                       </div>
                       <div class="form-group">
                           <label for="password" class="text-info">Password:</label><br>
@@ -20,7 +22,7 @@
                             <span>Remember me</span>
                         </label>
                       </div>
-                      <button type="submit" class="btn btn-primary">Sign in</button>
+                      <button mat-raised-button id="button-login" type="submit">Sign in</button>
                   </form>
               </div>
           </div>

@@ -7,7 +7,7 @@ import { Calendar } from '../calendar.model';
 })
 export class CreateCalendarComponent implements OnInit {
   Calendar: Calendar=new Calendar();
-  checked='true';
+  checked='false';
   constructor() { }
 
   ngOnInit(): void {

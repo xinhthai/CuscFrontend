@@ -88,9 +88,10 @@ const config={
     SizeDectectorComponent,
     ListNewByMenuComponent,
     sanitizeHtmlPipe,
+
     MenuComponent,
     MenuDialogComponent,
-    CreateCalendarComponent
+    CreateCalendarComponent,
   ],
   imports: [
     BrowserModule,
