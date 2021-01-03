@@ -42,7 +42,7 @@ import {ResponsiveModule} from 'ngx-responsive';
 import { ListNewByMenuComponent } from './layouts/main-layout/navbar/list-new-by-menu/list-new-by-menu.component';
 import { sanitizeHtmlPipe } from './shared/safe-html.pipe';
 import {MenuComponent} from './data-management/admin/menu/menu.component';
-import {AngularWebStorageModule} from 'angular-web-storage';
+import { AngularWebStorageModule } from 'angular-web-storage';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AuthInterceptor } from './blocks/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/auth-expired.interceptor';

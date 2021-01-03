@@ -1,4 +1,3 @@
-import { Byte } from "@angular/compiler/src/util";
 
 export class NewsDTO{
   newsId: number;
@@ -6,9 +5,9 @@ export class NewsDTO{
   shortContent: string;
   detail: string;
   createdDate: Date;
-  menuId: number;
-  categoryId: number;
-  userId: string;
+  menuId: number = 0;
+  categoryId: number = 0;
+  username: string;
   mainNews: boolean;
   imagePath: File;
   status: boolean;

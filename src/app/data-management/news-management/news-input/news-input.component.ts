@@ -5,12 +5,12 @@ import { CategoryService } from '../news-category/category.service';
 import * as ClassicEditor from '../../../../assets/ckeditor5/build/ckeditor';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SnotifyService } from 'ng-snotify';
-import { Menu } from 'src/app/layouts/main-layout/menu.model';
 import { MenuService } from 'src/app/layouts/main-layout/menu.service';
 import { NewsService } from '../news.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NewsDTO } from '../news.model';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-news-input',
@@ -36,7 +36,8 @@ export class NewsInputComponent implements OnInit {
     private dialog : MatDialog,
     private menuService: MenuService,
     private newsService: NewsService,
-    private snotifyService: SnotifyService
+    private snotifyService: SnotifyService,
+    private $localStorage: LocalStorageService
   ) { }
   ngOnInit(): void {
     this.getAllCategory();
@@ -92,7 +93,6 @@ export class NewsInputComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe(
       data =>{
         this.listCategory=data;
-        console.log(this.listCategory)
       },
       error => console.log(error)
     );
@@ -102,7 +102,6 @@ export class NewsInputComponent implements OnInit {
     this.menuService.getAllMenu().subscribe(
       data =>{
         this.listMenu=data;
-        console.log(this.listMenu)
       },
       error => console.log(error)
     );
@@ -124,8 +123,6 @@ export class NewsInputComponent implements OnInit {
     for(let i =0; i < this.listCategory.length; i++){
       if(selectedCategory === this.listCategory[i].categoryName){
         this.newsDTO.categoryId = this.listCategory[i].categoryId;
-        console.log(this.selectedCategory)
-
       }
     }
   }
@@ -136,7 +133,8 @@ export class NewsInputComponent implements OnInit {
   }
 
   addNews(newsDTO:NewsDTO): any{
-    newsDTO.menuId = this.menuId;
+    newsDTO.username = this.$localStorage.retrieve('currentUser').username;
+    this.menuId?newsDTO.menuId = this.menuId : newsDTO.menuId = 0;
     newsDTO.detail = this.editorContent;
     newsDTO.mainNews = this.checked;
     console.log(newsDTO);
@@ -149,30 +147,5 @@ export class NewsInputComponent implements OnInit {
       this.snotifyService.error('Thêm loại tin thất bại!');
     }
   );
-}
-
-  // dialog
-//   nameinfo:string;
-//   openDialog(){
-//     this.nameinfo="Bạn có chắc muốn thêm bản tin vào danh sách tin tức?";
-//     this.dialog.open(DialogComponent,{
-//       data: {nameinfo: this.nameinfo, status: 1}
-//     });
-//   }
-// }
-// @Component({
-//   selector: 'dialog-component',
-//   templateUrl: './dialog.component.html'
-// })
-// export class DialogComponent implements OnInit{
-//   constructor(
-//     @Inject(MAT_DIALOG_DATA) public data: { nameinfo: string, status: number}
-//   ){}
-//   ngOnInit(): void {
-
-//   }
-
-//   notifycation(){
-//     console.log('đây đây nè');
-//   }
+  }
 }
