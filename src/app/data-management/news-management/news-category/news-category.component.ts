@@ -32,14 +32,12 @@ export class NewsCategoryComponent implements OnInit , OnDestroy{
       private routes : Router,
       private snotifyService: SnotifyService,
       private dialog: MatDialog,
-      private changeDetectorRefs: ChangeDetectorRef,
-      private local: LocalStorageService
+      private changeDetectorRefs: ChangeDetectorRef
     ) {}
 
 
   ngOnInit(): void {
     this.allListCategory();
-    console.log(this.local.get('a'));
   }
   ngOnDestroy():void{
 
@@ -58,10 +56,6 @@ export class NewsCategoryComponent implements OnInit , OnDestroy{
         this.dataSource=data;
         this.dataSource =new MatTableDataSource(data);
         this.dataSource.paginator=this.paginator;
-        // this.local.set('dataSource',this.dataSource);
-        this.local.set('resource',JSON.stringify(this.dataSource));
-        // console.log(this.local.get('dataSource'));
-        console.log(JSON.parse(JSON.stringify(this.local.get('resource'))));
       },
       error => console.log(error)
     );

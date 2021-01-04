@@ -13,4 +13,16 @@ export class CalendarService {
   addCalendar(calendar : Calendar): Observable<any>{
     return this.http.post(SERVER_API_URL + '/lits', calendar);
   };
+  listCalendar(): Observable<any>{
+    return this.http.get(SERVER_API_URL + '/lits');
+  }
+  deleteCalendar(id): Observable<any>{
+    return this.http.delete(SERVER_API_URL+'/lits/'+id);
+  }
+  getCalendarById(id): Observable<any>{
+    return this.http.get(SERVER_API_URL+'/lits/'+id);
+  }
+  updateCalendarById(calendar: Calendar): Observable<any>{
+    return this.http.put(SERVER_API_URL+'/lits',calendar);
+  }
 }

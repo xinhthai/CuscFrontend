@@ -91,7 +91,8 @@
             <textarea matInput [(ngModel)]="Calendar.lits_ttkhac" name="lits_ttkhac"></textarea>
           </mat-form-field>
         </div>
-        <button (click)="addCalendar()" id="button-add-calendar" mat-raised-button color="primary">Thêm</button>
+        <button (click)="addCalendar()" [ngStyle]="{'display': id!=null ? 'none' : 'block'}" id="button-add-calendar" mat-raised-button color="primary">Thêm</button>
+        <button (click)="updateCalendar()" [ngStyle]="{'display': id!=null ? 'block' : 'none'}"  mat-raised-button color="primary">Update</button>
       </div>
     </form>
   </div>

@@ -17,6 +17,7 @@ import { ListNewByMenuComponent } from './layouts/main-layout/navbar/list-new-by
 import { MenuComponent } from './data-management/admin/menu/menu.component';
 import { CreateCalendarComponent } from './data-management/calendar/create-calendar/create-calendar.component';
 import { ListCalendarComponent } from './data-management/calendar/list-calendar/list-calendar.component';
+import { HomeCalendarDetailComponent } from './home/home-calendar-detail/home-calendar-detail.component';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
@@ -39,6 +40,10 @@ import { ListCalendarComponent } from './data-management/calendar/list-calendar/
           {
             path: 'educate/:id',
             component: ListNewByMenuComponent
+          },
+          {
+            path: 'calendar/:id',
+            component: HomeCalendarDetailComponent
           }
         ]
       },
@@ -105,6 +110,10 @@ import { ListCalendarComponent } from './data-management/calendar/list-calendar/
                 path: 'list-calendar',
                 component: ListCalendarComponent
               },
+              {
+                path: 'add-calendar/:id',
+                component: CreateCalendarComponent
+              }
             ]
           }
         ]

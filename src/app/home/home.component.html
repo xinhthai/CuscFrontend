@@ -26,68 +26,31 @@
       </div>
       <div id="calendar-content">
         <div>
-          <table style="width: 98%; border-collapse: collapse;">
+          <table style=" margin-left: 10px; margin-top: 10px; width: 98%; border-collapse: collapse;">
             <tbody>
-
-              <tr>
-                <td >
-                  <table style="width: 100%;">
-                    <tbody>
-                      <tr class="calendar-name">
-                        <td colspan="2"><a href="#">Thiết kế đồ họa cho quảng cáo</a></td>
-                      </tr>
-                      <tr class="calendar-detail">
-                        <td class="calendar-calendar"></td>
-                        <td class="calendar-calendar-text">Ngày khai giảng: 16/12/2020</td>
-                      </tr>
-                      <tr class="calendar-detail">
-                        <td class="calendar-clock"></td>
-                        <td class="calendar-clock-text">Giờ học: 17:30-19:30, T2,4,6</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <table style="width: 100%;">
-                    <tbody>
-                      <tr class="calendar-name">
-                        <td colspan="2"><a href="#">Chuyên viên phân tích dữ liệu</a></td>
-                      </tr>
-                      <tr class="calendar-detail">
-                        <td class="calendar-calendar"></td>
-                        <td class="calendar-calendar-text">Ngày khai giảng: 16/12/2020</td>
-                      </tr>
-                      <tr class="calendar-detail">
-                        <td class="calendar-clock"></td>
-                        <td class="calendar-clock-text">Giờ học: 17:30-19:30, T2,4,6</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <table style="width: 100%;">
-                    <tbody>
-                      <tr class="calendar-name">
-                        <td colspan="2"><a href="#">Chuyên gia trí tuệ nhân tạo</a></td>
-                      </tr>
-                      <tr class="calendar-detail">
-                        <td class="calendar-calendar"></td>
-                        <td class="calendar-calendar-text">Ngày khai giảng: 16/12/2020</td>
-                      </tr>
-                      <tr class="calendar-detail">
-                        <td class="calendar-clock"></td>
-                        <td class="calendar-clock-text">Giờ học: 17:30-19:30, T2,4,6</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <span *ngFor="let item of listCalendar; let i=index">
+                <span *ngIf="i<4">
+                  <tr>
+                    <td>
+                      <table style="width: 100%;">
+                        <tbody>
+                          <tr class="calendar-name">
+                            <td colspan="2"><a [routerLink]="['/calendar/'+item.lits_id]" (click)="detailCalendar(item.lits_id)">{{item.lits_ten}}</a></td>
+                          </tr>
+                          <tr class="calendar-detail">
+                            <td class="calendar-calendar"></td>
+                            <td class="calendar-calendar-text">Ngày khai giảng: {{item.lits_ngaykg}}</td>
+                          </tr>
+                          <tr class="calendar-detail">
+                            <td class="calendar-clock"></td>
+                            <td class="calendar-clock-text">Giờ học: {{item.lits_tghoc}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </span>
+              </span>
             </tbody>
           </table>
         </div>

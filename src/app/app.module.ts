@@ -49,6 +49,8 @@ import { AuthExpiredInterceptor } from './blocks/auth-expired.interceptor';
 import { MenuDialogComponent } from './data-management/admin/menu/menu-dialog/menu-dialog.component';
 import {CreateCalendarComponent} from './data-management/calendar/create-calendar/create-calendar.component';
 import { ListCalendarComponent } from './data-management/calendar/list-calendar/list-calendar.component';
+import { DialogDeleteCalendarComponent } from './data-management/calendar/dialog-delete-calendar/dialog-delete-calendar.component';
+import { HomeCalendarDetailComponent } from './home/home-calendar-detail/home-calendar-detail.component';
 const config={
   breakPoints: {
     xs: {max: 575},
@@ -94,6 +96,8 @@ const config={
     MenuDialogComponent,
     CreateCalendarComponent,
     ListCalendarComponent,
+    DialogDeleteCalendarComponent,
+    HomeCalendarDetailComponent,
   ],
   imports: [
     BrowserModule,
