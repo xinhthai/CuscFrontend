@@ -9,4 +9,6 @@ export class Calendar{
   lits_tghoc: string;
   lits_ttkhac: string;
   lits_ngayghidanh: string;
+  link: string;
+  username: string;
 }
