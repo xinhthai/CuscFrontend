@@ -24,7 +24,7 @@ export class AccountService {
     private http: HttpClient) {}
 
   fetch(): Observable<HttpResponse<Account>> {
-    return this.http.get<Account>(SERVER_API_URL + '/users', { observe: 'response' });
+    return this.http.get<Account>(SERVER_API_URL + '/account', { observe: 'response' });
   }
 
   save(account: any): Observable<HttpResponse<any>> {
@@ -32,7 +32,7 @@ export class AccountService {
   }
 
   authenticate(identity) {
-    this.userIdentity = identity;
+    this.userIdentity = identity.body;
     this.authenticated = identity !== null;
     this.authenticationState.next(this.userIdentity);
   }
@@ -47,20 +47,6 @@ export class AccountService {
     return this.userIdentity.authorities.some((authority: string) => authorities.includes(authority));
   }
 
-  // hasAuthority(authority: string): Promise<boolean> {
-  //   if (!this.authenticated) {
-  //     return Promise.resolve(false);
-  //   }
-
-  //   return this.identity().then(
-  //     id => {
-  //       return Promise.resolve(id.authorities && id.authorities.includes(authority));
-  //     },
-  //     () => {
-  //       return Promise.resolve(false);
-  //     }
-  //   );
-  // }
   identity(force?: boolean): Observable<Account | null> {
     if (!this.accountCache$ || force || !this.isAuthenticated()) {
       this.accountCache$ = this.fetch().pipe(
@@ -79,37 +65,6 @@ export class AccountService {
     return this.accountCache$;
   }
 
-  // identity(force?: boolean): Promise<Account> {
-  //   if (force) {
-  //     this.userIdentity = undefined;
-  //   }
-
-  //   if (this.userIdentity) {
-  //     return Promise.resolve(this.userIdentity);
-  //   }
-
-  //   return this.fetch()
-  //     .toPromise()
-  //     .then(response => {
-  //       const account: Account = response.body;
-  //       if (account) {
-  //         this.userIdentity = account;
-  //         this.authenticated = true;
-  //       } else {
-  //         this.userIdentity = null;
-  //         this.authenticated = false;
-  //       }
-  //       this.authenticationState.next(this.userIdentity);
-  //       return this.userIdentity;
-  //     })
-  //     .catch(err => {
-  //       this.userIdentity = null;
-  //       this.authenticated = false;
-  //       this.authenticationState.next(this.userIdentity);
-  //       return null;
-  //     });
-  // }
-
   isAuthenticated(): boolean {
     return this.authenticated;
   }
@@ -123,8 +78,6 @@ export class AccountService {
   }
 
   private navigateToStoredUrl(): void {
-    // previousState can be set in the authExpiredInterceptor and in the userRouteAccessService
-    // if login is successful, go to stored previousState and clear previousState
     const previousUrl = this.stateStorageService.getUrl();
     if (previousUrl) {
       this.stateStorageService.clearUrl();

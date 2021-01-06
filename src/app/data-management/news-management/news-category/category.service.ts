@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-const URL='http://localhost:3000/api/categories';
+import { SERVER_API_URL } from 'src/app/app.constants';
 const httpOptions = {
   headers : new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -12,24 +12,24 @@ export class CategoryService {
 
   constructor( private http: HttpClient ) {}
   getAllCategory(): Observable<any>{
-    return this.http.get(`${URL}`);
+    return this.http.get(`${SERVER_API_URL}`);
   }
   getOneCategory(id: number): Observable<any>{
-    return this.http.get(`${URL}/${id}`);
+    return this.http.get(`${SERVER_API_URL}/${id}`);
   }
   addCategory(value): Observable<any>{
     console.log(value);
-    return this.http.post(`${URL}`, {
+    return this.http.post(`${SERVER_API_URL}`, {
       categoryName: value.categoryName
     }, httpOptions);
   }
   editCategory(value): Observable<any>{
-    return this.http.put(`${URL}`,{
+    return this.http.put(`${SERVER_API_URL}`,{
       categoryId : value.categoryId,
       categoryName : value.categoryName
     });
   }
   delCategory(id:number): Observable<any>{
-    return this.http.delete(`${URL}/${id}`,httpOptions);
+    return this.http.delete(`${SERVER_API_URL}/${id}`,httpOptions);
   }
 }

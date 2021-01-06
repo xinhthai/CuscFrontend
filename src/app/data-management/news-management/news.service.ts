@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SERVER_API_URL } from 'src/app/app.constants';
 import { NewsDTO} from './news.model';
 
-const URL='http://localhost:3000/api/news';
 const httpOptions = {
   headers : new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -41,28 +41,27 @@ export class NewsService {
     return this.http.put(`${URL}`,formData)
   }
   getAllNewsByTitle(): Observable<any>{
-    return this.http.get("http://localhost:3000/api/news/view",httpOptions);
+    return this.http.get(SERVER_API_URL + '/news/view',httpOptions);
   }
 
   deleteNewsById(id): Observable<any>{
-    console.log(id);
-    return this.http.delete(`${URL}/${id}`,httpOptions);
+    return this.http.delete(`${SERVER_API_URL}/${id}`,httpOptions);
   }
   getDetailNews(id):Observable<any>{
-    return this.http.get(`${URL}/${id}`,httpOptions);
+    return this.http.get(`${SERVER_API_URL}/${id}`,httpOptions);
   }
   changeStatusNews(id,status):Observable<any>{
-    return this.http.put(`${URL}/${id}`,'',{
+    return this.http.put(`${SERVER_API_URL}/${id}`,'',{
       params: new HttpParams().set('status',status)
     });
   }
   getListNewByCategoryId(id):Observable<any>{
-    return this.http.get("http://localhost:3000/api/news/type",{
+    return this.http.get(SERVER_API_URL + '/news/type',{
       params: new HttpParams().set('categoryId',id)
     });
   }
   getListNewsByMenuId(id):Observable<any>{
-    return this.http.get('http://localhost:3000/api/news/type',{
+    return this.http.get(SERVER_API_URL + '/news/type',{
       params: new HttpParams().set('menuId',id)
     });
   }

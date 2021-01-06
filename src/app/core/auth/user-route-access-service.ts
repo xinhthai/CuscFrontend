@@ -1,4 +1,4 @@
-import { Injectable, isDevMode } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -34,7 +34,6 @@ export class UserRouteAccessService implements CanActivate {
           this.router.navigate(['404']);
           return false;
         }
-
         this.stateStorageService.storeUrl(url);
         this.router.navigate(['']);
         return false;

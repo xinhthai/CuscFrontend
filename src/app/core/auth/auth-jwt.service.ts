@@ -4,10 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { SERVER_API_URL } from 'src/app/app.constants';
-// const AUTH_API='http://localhost:3000/api/auth';
-// const httpOptions = {
-//   headers : new HttpHeaders({'Authorization': 'application/json'})
-// };
 
 @Injectable({
   providedIn: 'root'

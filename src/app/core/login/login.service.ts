@@ -13,9 +13,7 @@ export class LoginService {
       this.authServerProvider.login(credentials).subscribe(
         data => {
           resolve(data);
-          // this.accountService.identity(true).then(account => {
-          //   resolve(data);
-          // });
+         
           return cb();
         },
         err => {
@@ -26,10 +24,6 @@ export class LoginService {
       );
     });
   }
-
-  // loginWithToken(jwt,rememberMe ) {
-  //   return this.authServerProvider.loginWithToken(jwt,rememberMe);
-  // }
 
   logout() {
     this.authServerProvider.logout().subscribe(null, null, () => this.accountService.authenticate(null));
