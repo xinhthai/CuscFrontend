@@ -2,9 +2,8 @@ import { Component, Input, OnInit,ElementRef, Renderer2, AfterViewInit } from '@
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
-import { StateStorageService } from '../service/state-storage.service';
-// import { TokenService } from '../service/token.service';
-import { LoginService } from './login.service';
+import { StateStorageService } from '../../core/auth/state-storage.service';
+import { LoginService } from '../../core/login/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

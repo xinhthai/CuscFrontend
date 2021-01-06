@@ -14,8 +14,7 @@ import { CommonModule} from '@angular/common';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminHeaderComponent } from './layouts/admin-layout/admin-header/admin-header.component';
 import { NewsTableComponent } from './data-management/news-management/news-table/news-table.component';
-import { AccountComponent } from './data-management/account/account.component';
-import { LoginComponent } from './data-management/account/login/login.component';
+import { LoginComponent } from './shared/login/login.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NewsCategoryComponent } from './data-management/news-management/news-category/news-category.component';
 import {  NewsInputComponent } from './data-management/news-management/news-input/news-input.component';
@@ -24,13 +23,11 @@ import { MainPageComponent } from './data-management/news-management/main-page/m
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule} from '@angular/material/select';
-import { DemoMaterialModule } from './main/material.module';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { ChoiceDialogComponent } from './shared/choice-dialog/choice-dialog.component';
 import { NotificationDialogComponent } from './shared/notification-dialog/notification-dialog.component';
-import { ErrorComponent } from './data-management/error/error.component';
+import { ErrorComponent } from './shared/error/error.component';
 import { DialogAddComponent } from './data-management/news-management/news-category/dialog-add/dialog-add.component';
-import { RegisterComponent } from './data-management/account/register/register.component';
 import { DialogUpdateComponent } from './data-management/news-management/news-category/dialog-update/dialog-update.component';
 import { NewsUpdateComponent } from './data-management/news-management/news-update/news-update.component';
 import { DialogDeleteComponent } from './data-management/news-management/news-category/dialog-delete/dialog-delete.component';
@@ -40,7 +37,7 @@ import { MainNewsDetailComponent } from './data-management/news-management/main-
 import { SizeDectectorComponent } from './size-dectector/size-dectector.component';
 import {ResponsiveModule} from 'ngx-responsive';
 import { ListNewByMenuComponent } from './layouts/main-layout/navbar/list-new-by-menu/list-new-by-menu.component';
-import { sanitizeHtmlPipe } from './shared/safe-html.pipe';
+import { sanitizeHtmlPipe } from './shared/pipes/safe-html.pipe';
 import {MenuComponent} from './data-management/admin/menu/menu.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AuthInterceptor } from './blocks/auth.interceptor';
@@ -50,6 +47,7 @@ import {CreateCalendarComponent} from './data-management/calendar/create-calenda
 import { ListCalendarComponent } from './data-management/calendar/list-calendar/list-calendar.component';
 import { DialogDeleteCalendarComponent } from './data-management/calendar/dialog-delete-calendar/dialog-delete-calendar.component';
 import { HomeCalendarDetailComponent } from './home/home-calendar-detail/home-calendar-detail.component';
+import { CuscMaterialModule } from './shared/material/material.module';
 const config={
   breakPoints: {
     xs: {max: 575},
@@ -73,14 +71,12 @@ const config={
     NewsTableComponent,
     NewsCategoryComponent,
     NewsInputComponent,
-    AccountComponent,
     NewsDetailComponent,
     MainPageComponent,
     ChoiceDialogComponent,
     NotificationDialogComponent,
     ErrorComponent,
     DialogAddComponent,
-    RegisterComponent,
     DialogUpdateComponent,
     NewsUpdateComponent,
     DialogDeleteComponent,
@@ -90,7 +86,6 @@ const config={
     SizeDectectorComponent,
     ListNewByMenuComponent,
     sanitizeHtmlPipe,
-
     MenuComponent,
     MenuDialogComponent,
     CreateCalendarComponent,
@@ -110,9 +105,9 @@ const config={
     BrowserAnimationsModule,
     MatSliderModule,
     MatSelectModule,
-    DemoMaterialModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    CuscMaterialModule,
     ResponsiveModule.forRoot(config),
     NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-' }),
 

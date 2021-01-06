@@ -92,4 +92,4 @@ import {MatInputModule} from '@angular/material/input';
     MatFormFieldModule,
   ]
 })
-export class DemoMaterialModule {}
+export class CuscMaterialModule {}

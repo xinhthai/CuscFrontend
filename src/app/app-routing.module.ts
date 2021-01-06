@@ -4,12 +4,11 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { NewsInputComponent } from './data-management/news-management/news-input/news-input.component';
 import { NewsTableComponent } from './data-management/news-management/news-table/news-table.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from '../app/data-management/account/login/login.component';
+import { LoginComponent } from './shared/login/login.component';
 import { NewsCategoryComponent } from './data-management/news-management/news-category/news-category.component';
 import { NewsDetailComponent } from './data-management/news-management/news-detail/news-detail.component';
 import { MainPageComponent } from './data-management/news-management/main-page/main-page.component';
-import { ErrorComponent } from './data-management/error/error.component';
-import { RegisterComponent } from './data-management/account/register/register.component';
+import { ErrorComponent } from './shared/error/error.component';
 import { NewsUpdateComponent } from './data-management/news-management/news-update/news-update.component';
 import { MainListNewsComponent } from './data-management/news-management/main-page/main-list-news/main-list-news.component';
 import { MainNewsDetailComponent } from './data-management/news-management/main-page/main-news-detail/main-news-detail.component';
@@ -19,6 +18,7 @@ import { CreateCalendarComponent } from './data-management/calendar/create-calen
 import { ListCalendarComponent } from './data-management/calendar/list-calendar/list-calendar.component';
 import { HomeCalendarDetailComponent } from './home/home-calendar-detail/home-calendar-detail.component';
 import { Authority } from './shared/constants/authority.constants';
+import { UserRouteAccessService } from './core/auth/user-route-access-service';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
@@ -65,6 +65,7 @@ import { Authority } from './shared/constants/authority.constants';
             data: {
               authorities: [Authority.CUSC_ADMIN,Authority.CUSC_WRITER]
             },
+            canActivate: [UserRouteAccessService],
             component: AdminHomeComponent,
             children:[
               {
@@ -95,16 +96,6 @@ import { Authority } from './shared/constants/authority.constants';
               {
                 path: 'menu-config',
                 component: MenuComponent
-              },
-              {
-                path: 'account',
-                component: RegisterComponent,
-                children: [
-                  {
-                    path: 'register',
-                    component: RegisterComponent
-                  }
-                ]
               },
               {
                 path: 'add-calendar',
