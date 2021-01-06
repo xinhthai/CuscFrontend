@@ -18,6 +18,7 @@ import { MenuComponent } from './data-management/admin/menu/menu.component';
 import { CreateCalendarComponent } from './data-management/calendar/create-calendar/create-calendar.component';
 import { ListCalendarComponent } from './data-management/calendar/list-calendar/list-calendar.component';
 import { HomeCalendarDetailComponent } from './home/home-calendar-detail/home-calendar-detail.component';
+import { Authority } from './shared/constants/authority.constants';
 @NgModule({
   imports: [RouterModule.forRoot(
     [
@@ -61,6 +62,9 @@ import { HomeCalendarDetailComponent } from './home/home-calendar-detail/home-ca
           },
           {
             path: 'admin',
+            data: {
+              authorities: [Authority.CUSC_ADMIN,Authority.CUSC_WRITER]
+            },
             component: AdminHomeComponent,
             children:[
               {
