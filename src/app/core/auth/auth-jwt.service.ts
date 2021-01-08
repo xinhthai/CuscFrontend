@@ -47,6 +47,8 @@ export class AuthServerProvider {
       this.$localStorage.store('authenticationToken', jwt);
       this.$localStorage.store('currentUser', currentUser);
     } else {
+      this.$localStorage.clear('authenticationToken');
+      this.$localStorage.clear('currentUser');
       this.$sessionStorage.store('authenticationToken', jwt);
       this.$sessionStorage.store('currentUser',currentUser);
     }
