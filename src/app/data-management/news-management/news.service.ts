@@ -45,13 +45,13 @@ export class NewsService {
   }
 
   deleteNewsById(id): Observable<any>{
-    return this.http.delete(`${SERVER_API_URL}`+'/news/'+`${id}`,httpOptions);
+    return this.http.delete(`${SERVER_API_URL}+'/news/'${id}`,httpOptions);
   }
   getDetailNews(id):Observable<any>{
-    return this.http.get(`${SERVER_API_URL}`+'/news/'+`${id}`,httpOptions);
+    return this.http.get(`${SERVER_API_URL}+'/news/'${id}`,httpOptions);
   }
   changeStatusNews(id,status):Observable<any>{
-    return this.http.put(`${SERVER_API_URL}`+'/news/'+`${id}`,'',{
+    return this.http.put(`${SERVER_API_URL}+'/news/'${id}`,'',{
       params: new HttpParams().set('status',status)
     });
   }
