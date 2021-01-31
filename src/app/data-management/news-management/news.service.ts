@@ -25,7 +25,7 @@ export class NewsService {
     formData.append('categoryId',String(news.categoryId));
     formData.append('menuId',String(news.menuId));
     formData.append('username',news.username);
-    return this.http.post(`${URL}`,formData)
+    return this.http.post(`${SERVER_API_URL}`+'/news',formData)
   }
   updateNews(news: NewsDTO): Observable<any>{
     const formData = new FormData();
@@ -38,25 +38,25 @@ export class NewsService {
     formData.append('categoryId',String(news.categoryId));
     formData.append('menuId',String(news.menuId));
     formData.append('createdDate',String(news.createdDate));
-    return this.http.put(`${URL}`,formData)
+    return this.http.put(`${SERVER_API_URL}`+'/news',formData)
   }
   getAllNewsByTitle(): Observable<any>{
-    return this.http.get(SERVER_API_URL + '/news/view',httpOptions);
+    return this.http.get(`${SERVER_API_URL}`+ '/news/view',httpOptions);
   }
 
   deleteNewsById(id): Observable<any>{
-    return this.http.delete(`${SERVER_API_URL}/${id}`,httpOptions);
+    return this.http.delete(`${SERVER_API_URL}`+'/news/'+`${id}`,httpOptions);
   }
   getDetailNews(id):Observable<any>{
-    return this.http.get(`${SERVER_API_URL}/${id}`,httpOptions);
+    return this.http.get(`${SERVER_API_URL}`+'/news/'+`${id}`,httpOptions);
   }
   changeStatusNews(id,status):Observable<any>{
-    return this.http.put(`${SERVER_API_URL}/${id}`,'',{
+    return this.http.put(`${SERVER_API_URL}`+'/news/'+`${id}`,'',{
       params: new HttpParams().set('status',status)
     });
   }
   getListNewByCategoryId(id):Observable<any>{
-    return this.http.get(SERVER_API_URL + '/news/type',{
+    return this.http.get(SERVER_API_URL+'/news/type',{
       params: new HttpParams().set('categoryId',id)
     });
   }

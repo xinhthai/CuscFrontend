@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SnotifyService } from 'ng-snotify';
 import { Observable } from 'rxjs';
 import { Menu } from 'src/app/layouts/main-layout/menu.model';
 import { MenuService } from 'src/app/layouts/main-layout/menu.service';
@@ -17,7 +18,8 @@ export class MenuComponent implements OnInit {
   selectedMenu:any ={};
   constructor(
     private menuService: MenuService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snotifyService: SnotifyService
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class MenuComponent implements OnInit {
       this.menuService.addMenu(this.menu).subscribe(
         data =>{
           console.log('Thêm menu thành công!');
+          this.snotifyService.success('Thêm menu thành công!');
         },
         error => console.log(error)
       );
@@ -64,4 +67,5 @@ export class MenuComponent implements OnInit {
       );
     }
   }
+
 }

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SnotifyService } from 'ng-snotify';
 import { MenuService } from 'src/app/layouts/main-layout/menu.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class MenuDialogComponent implements OnInit {
 
   constructor(
     private menuService: MenuService,
-    @Inject(MAT_DIALOG_DATA) public data: {id: number}
+    @Inject(MAT_DIALOG_DATA) public data: {id: number},
+    private snotifyService: SnotifyService
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +30,10 @@ export class MenuDialogComponent implements OnInit {
 
   }
   deleteMenu(){
-
+    this.menuService.deleteMenu(this.data.id).subscribe(
+      data => {
+        this.snotifyService.success("Xóa menu thành công!");
+      }
+    )
   }
 }

@@ -10,6 +10,7 @@ import { NewsService } from '../news.service';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogDeleteComponent } from '../news-category/dialog-delete/dialog-delete.component';
 import { DialogChangeStatusComponent } from './dialog-change-status/dialog-change-status.component';
+import { LocalStorageService } from 'ngx-webstorage';
 @Component({
   selector: 'app-news-table',
   templateUrl: './news-table.component.html',
@@ -21,16 +22,18 @@ export class NewsTableComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource :MatTableDataSource<NewsViewDTO>;
-  displayColumn:string[]=['title','dateCreate','category','checknews','detail','deleteNews'];
+  displayColumn:string[]=['title','dateCreate','category','detail'];
   constructor(
     private router: Router,
     private newsService: NewsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private local: LocalStorageService
   ) { }
 
 
   ngOnInit(): void {
     this.getAllNewsByTitle();
+    this.checkRole();
   }
   nextToCreateNews(){
     this.router.navigate(['/admin/news/create-news']);
@@ -80,5 +83,23 @@ export class NewsTableComponent implements OnInit{
     this.dialog.open(DialogChangeStatusComponent,{
       data: {id: id, status: status}
     })
+  }
+
+  //phan chia component
+  role: Array<String>;
+  checkRole(){
+    this.role=this.local.retrieve('currentUser').authorities;
+    console.log(this.role);
+    this.roleAdmin();
+  }
+  enableStatus=false;
+  roleAdmin(){
+    for(var i=0;i<this.role.length;i++){
+      if(this.role[i] === 'ROLE_ADMIN'){
+        this.enableStatus=true;
+        this.displayColumn.push('checknews');
+        this.displayColumn.push('deleteNews');
+      }
+    }
   }
 }

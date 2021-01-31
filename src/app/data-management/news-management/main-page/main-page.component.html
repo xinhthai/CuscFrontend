@@ -232,7 +232,7 @@
               <span *ngFor="let news of listNews">
                 <span *ngIf="news.categoryName===category.categoryName && news.mainNews===true && news.status===true">
                   <div class="blog-main">
-                    <div class="blog-item" style="height: 400px; overflow: hidden;">
+                    <div class="blog-item" style="height: 300px; overflow: hidden;">
                       <div class="blog-name">
                         <a [routerLink]="['/newsdetail',news.newsId]">{{news.title}}</a>
                       </div>
@@ -250,8 +250,10 @@
               </span>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 second-news">
-              <span *ngFor="let news of listNews">
+              <span *ngFor="let news of listNews; let i=index">
                 <span *ngIf="news.categoryName===category.categoryName && news.mainNews===false && news.status===true">
+                  <!-- <span *ngFor="let i of 3"> -->
+
                   <a [routerLink]="['/newsdetail',news.newsId]">
                     <div class="news-item-title">
                       {{news.title}}

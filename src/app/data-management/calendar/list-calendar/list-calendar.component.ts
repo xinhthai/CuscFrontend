@@ -16,7 +16,7 @@ import { DialogDeleteCalendarComponent } from '../dialog-delete-calendar/dialog-
 export class ListCalendarComponent implements OnInit {
   dataSource: MatTableDataSource<Calendar>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  displayColumns: string[]=['name', 'thidauvao', 'ngaythi','ngaykg','bddk','ktdk','ttkhac','add','del'];
+  displayColumns: string[]=['name', 'ngaythi','bddk','ktdk','add','del'];
   constructor(
     private calendarService: CalendarService,
     private dialog: MatDialog,

@@ -5,34 +5,34 @@
       <th mat-header-cell *matHeaderCellDef>Tên lịch tuyển sinh</th>
       <td mat-cell *matCellDef="let element">{{element.lits_ten}}</td>
     </ng-container>
-    <ng-container matColumnDef="thidauvao">
+    <!-- <ng-container matColumnDef="thidauvao">
       <th mat-header-cell *matHeaderCellDef>Thi đầu vào</th>
       <td mat-cell *matCellDef="let element">
         <span *ngIf="element.lits_thidauvao === true">
           <svg style="width: 20px; margin-left: 15px; " aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" class="svg-inline--fa fa-check fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>
         </span>
       </td>
-    </ng-container>
+    </ng-container> -->
     <ng-container matColumnDef="ngaythi">
       <th mat-header-cell *matHeaderCellDef>Ngày thi</th>
       <td mat-cell *matCellDef="let element">{{element.lits_ngaythi}}</td>
     </ng-container>
-    <ng-container matColumnDef="ngaykg">
+    <!-- <ng-container matColumnDef="ngaykg">
       <th mat-header-cell *matHeaderCellDef>Ngày khai giảng</th>
       <td mat-cell *matCellDef="let element">{{element.lits_ngaykg}}</td>
-    </ng-container>
+    </ng-container> -->
     <ng-container matColumnDef="bddk">
-      <th mat-header-cell *matHeaderCellDef>Ngày bắt đầu đăng ký</th>
+      <th mat-header-cell *matHeaderCellDef>Ngày bắt đầu <br> đăng ký</th>
       <td mat-cell *matCellDef="let element">{{element.lits_bddk}}</td>
     </ng-container>
     <ng-container matColumnDef="ktdk">
-      <th mat-header-cell *matHeaderCellDef>Ngày kết thúc đăng ký</th>
+      <th mat-header-cell *matHeaderCellDef>Ngày kết thúc <br> đăng ký</th>
       <td mat-cell *matCellDef="let element">{{element.lits_ktdk}}</td>
     </ng-container>
-    <ng-container matColumnDef="ttkhac">
+    <!-- <ng-container matColumnDef="ttkhac">
       <th mat-header-cell *matHeaderCellDef>Thông tin khác</th>
       <td mat-cell *matCellDef="let element">{{element.lits_ttkhac}}</td>
-    </ng-container>
+    </ng-container> -->
     <ng-container matColumnDef="add">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="updateDialog(element.lits_id)">Sửa</button></td>

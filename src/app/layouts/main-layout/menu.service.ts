@@ -19,4 +19,7 @@ export class MenuService {
   addMenu(menu): Observable<any>{
     return this.http.post(`${URL}`,menu);
   }
+  deleteMenu(id): Observable<any>{
+    return this.http.delete(`${URL}/${id}`);
+  }
 }
